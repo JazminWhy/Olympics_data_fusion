@@ -58,28 +58,27 @@ public class AthleteFusingApp
 		
 		FusibleDataSet<Athlete, Attribute> ds1 = new FusibleHashedDataSet<>();
 		new AthleteXMLReader().loadFromXML(new File("data/input/20181029_figshare_Final.xml"), "/WinningAthletes/Athlete", ds1);		
-		
 		ds1.printDataSetDensityReport();
-		/*
+		
 		FusibleDataSet<Athlete, Attribute> ds2 = new FusibleHashedDataSet<>();
 		new AthleteXMLReader().loadFromXML(new File("data/input/20181027_Kaggle_Final.xml"), "/WinningAthletes/Athlete", ds2);
-		ds2.printDataSetDensityReport();
+		//ds2.printDataSetDensityReport();
 
 		FusibleDataSet<Athlete, Attribute> ds3 = new FusibleHashedDataSet<>();
 		new AthleteXMLReader().loadFromXML(new File("data/input/20181025_Rio_Final.xml"), "/WinningAthletes/Athlete", ds3);
-		ds3.printDataSetDensityReport();
+		//ds3.printDataSetDensityReport();
 
 		FusibleDataSet<Athlete, Attribute> ds4 = new FusibleHashedDataSet<>();
 		new AthleteXMLReader().loadFromXML(new File("data/input/20181025_DBpedia_Final.xml"), "/WinningAthletes/Athlete", ds4);
-		ds4.printDataSetDensityReport();
+		//ds4.printDataSetDensityReport();
 
 		FusibleDataSet<Athlete, Attribute> ds5 = new FusibleHashedDataSet<>();
 		new AthleteXMLReader().loadFromXML(new File("data/input/20181027_Gymnasts_Final.xml"), "/WinningAthletes/Athlete", ds5);
-		ds5.printDataSetDensityReport();
+		//ds5.printDataSetDensityReport();
 
 		FusibleDataSet<Athlete, Attribute> ds6 = new FusibleHashedDataSet<>();
 		new AthleteXMLReader().loadFromXML(new File("data/input/20181102_FieldAthletes_Final.xml"), "/WinningAthletes/Athlete", ds6);
-		ds6.printDataSetDensityReport();
+		//ds6.printDataSetDensityReport();
 		
 		// Maintain Provenance
 		// Scores (e.g. from rating)
