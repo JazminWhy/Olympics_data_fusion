@@ -129,7 +129,7 @@ public class Athlete extends AbstractRecord<Attribute> implements Serializable {
 
 	public void setOlympicParticipations(List<OlympicParticipation> olympicParticipations) {
 		OlympicParticipations = olympicParticipations;
-	}
+	} 
 
 	/*
 	 * @Override public String toString() { return
