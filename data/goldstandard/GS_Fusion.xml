@@ -682,4 +682,34 @@
 			</OlympicParticipation>
 		</OlympicParticipations>
 	</Athlete>
+	<Athlete>
+		<ID>fig_19490</ID>
+		<Name>gina lückenkemper</Name>
+		<Birthday>1996-11-21</Birthday>
+		<PlaceOfBirth>germany</PlaceOfBirth>
+		<Sex>female</Sex>
+		<Nationality>germany</Nationality>
+		<Weight>56</Weight>
+		<Height>1.70</Height>
+		<OlympicParticipations>
+			<OlympicParticipation>
+				<Year>2016</Year>
+				<Season>summer</Season>
+				<City>rio de janeiro</City>
+				<OlympicTeam>ger</OlympicTeam>
+				<Disciplines>athletics</Disciplines>
+				<Event>athletics women's 200 metres</Event>
+				<Medal>na</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>2016</Year>
+				<Season>summer</Season>
+				<City>rio de janeiro</City>
+				<OlympicTeam>ger</OlympicTeam>
+				<Disciplines>athletics</Disciplines>
+				<Event>athletics women's 4 x 100 metres relay</Event>
+				<Medal>na</Medal>
+			</OlympicParticipation>
+		</OlympicParticipations>
+	</Athlete>
 </WinningAthletes>
