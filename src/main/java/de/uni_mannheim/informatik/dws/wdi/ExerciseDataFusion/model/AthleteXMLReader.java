@@ -39,6 +39,14 @@ public class AthleteXMLReader extends XMLMatchableReader<Athlete, Attribute>  {
 	@Override
 	protected void initialiseDataset(DataSet<Athlete, Attribute> dataset) {
 		super.initialiseDataset(dataset);
+		dataset.addAttribute(Athlete.NAME);
+		dataset.addAttribute(Athlete.BIRTHDAY);
+		dataset.addAttribute(Athlete.PLACEOFBIRTH);
+		dataset.addAttribute(Athlete.SEX);
+		dataset.addAttribute(Athlete.NATIONALITY);
+		dataset.addAttribute(Athlete.WEIGHT);
+		dataset.addAttribute(Athlete.HEIGHT);
+		dataset.addAttribute(Athlete.OLYMPICPARTICIPATIONS);
 		
 	}
 	public Node node;
