@@ -13,8 +13,14 @@ package de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.lang3.StringUtils;
+
 import de.uni_mannheim.informatik.dws.winter.model.AbstractRecord;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 
@@ -33,9 +39,9 @@ public class Athlete extends AbstractRecord<Attribute> implements Serializable {
 	 * <Height>1.7</Height> <OlypmicParticipations> <OlypmicParticipation
 	 * id="DP-100253"> </OlypmicParticipation> </OlypmicParticipations> </Athlete>
 	 */
-
+	
 	protected String id;
-	protected String provenance;
+	//protected String provenance;
 	private String Name;
 	private LocalDateTime Birthday;
 	private String PlaceOfBirth;
@@ -46,8 +52,8 @@ public class Athlete extends AbstractRecord<Attribute> implements Serializable {
 	private List<OlympicParticipation> OlympicParticipations;
 	
 	public Athlete(String identifier, String provenance) {
-		id = identifier;
-		this.provenance = provenance;
+		super(identifier, provenance);
+		//this.provenance = provenance;
 		OlympicParticipations = new LinkedList<>();
 	}
 
@@ -57,14 +63,6 @@ public class Athlete extends AbstractRecord<Attribute> implements Serializable {
 
 	public void setId(String id) {
 		this.id = id;
-	}
-
-	public String getProvenance() {
-		return provenance;
-	}
-
-	public void setProvenance(String provenance) {
-		this.provenance = provenance;
 	}
 
 	public String getName() {
@@ -144,6 +142,35 @@ public class Athlete extends AbstractRecord<Attribute> implements Serializable {
 			return this.getIdentifier().equals(((Athlete) obj).getIdentifier());
 		} else
 			return false;
+	}
+	private Map<Attribute, Collection<String>> provenance = new HashMap<>();
+	private Collection<String> recordProvenance;
+
+	public void setRecordProvenance(Collection<String> provenance) {
+		recordProvenance = provenance;
+	}
+
+	public Collection<String> getRecordProvenance() {
+		return recordProvenance;
+	}
+
+	public void setAttributeProvenance(Attribute attribute,
+			Collection<String> provenance) {
+		this.provenance.put(attribute, provenance);
+	}
+
+	public Collection<String> getAttributeProvenance(String attribute) {
+		return provenance.get(attribute);
+	}
+
+	public String getMergedAttributeProvenance(Attribute attribute) {
+		Collection<String> prov = provenance.get(attribute);
+
+		if (prov != null) {
+			return StringUtils.join(prov, "+");
+		} else {
+			return "";
+		}
 	}
 	
 	public static final Attribute NAME = new Attribute("Name");
