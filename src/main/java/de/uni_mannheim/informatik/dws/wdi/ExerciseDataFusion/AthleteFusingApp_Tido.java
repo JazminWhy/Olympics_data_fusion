@@ -14,9 +14,17 @@ import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.evaluation.DateEval
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.evaluation.DirectorEvaluationRule;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.evaluation.TitleEvaluationRule;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.ActorsFuserUnion;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.BirthdayFuserFavourSource;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.DateFuserVoting;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.DirectorFuserLongestString;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.HeightFuserClusteredVoting;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.NameFuserFavourSource;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.NationalityFuserVoting;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.ParticipationFuserFavourSource;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.PoBFuserFavourSource;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.SexFuserVoting;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.TitleFuserShortestString;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.WeightFuserClusteredVoting;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model.Athlete;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model.AthleteXMLReader;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model.FusibleAthleteFactory;
@@ -132,11 +140,13 @@ public class AthleteFusingApp_Tido
 	
 		// add attribute fusers
 		strategy.addAttributeFuser(Athlete.NAME, new NameFuserFavourSource(),new TitleEvaluationRule()); //Eval missing
-		strategy.addAttributeFuser(Athlete.NAME, new BirthdayFuserFavourSource(),new TitleEvaluationRule()); //Eval missing
-		strategy.addAttributeFuser(Athlete.NAME, new PoBFuserFavourSource(),new TitleEvaluationRule()); //Eval missing
-		
+		strategy.addAttributeFuser(Athlete.BIRTHDAY, new BirthdayFuserFavourSource(),new TitleEvaluationRule()); //Eval missing
+		strategy.addAttributeFuser(Athlete.PLACEOFBIRTH, new PoBFuserFavourSource(),new TitleEvaluationRule()); //Eval missing
+		strategy.addAttributeFuser(Athlete.SEX, new SexFuserVoting(),new TitleEvaluationRule()); //Eval missing
+		strategy.addAttributeFuser(Athlete.NATIONALITY, new NationalityFuserVoting(),new TitleEvaluationRule()); //Eval missing
 		strategy.addAttributeFuser(Athlete.WEIGHT, new WeightFuserClusteredVoting(),new TitleEvaluationRule()); //Eval missing
 		strategy.addAttributeFuser(Athlete.HEIGHT, new HeightFuserClusteredVoting(),new TitleEvaluationRule()); //Eval missing
+		strategy.addAttributeFuser(Athlete.OLYMPICPARTICIPATIONS, new ParticipationFuserFavourSource(),new TitleEvaluationRule()); //Eval missing
 
 		// create the fusion engine
 		DataFusionEngine<Athlete, Attribute> engine = new DataFusionEngine<>(strategy);

@@ -31,7 +31,7 @@ import de.uni_mannheim.informatik.dws.winter.model.Matchable;
  * @param <ValueType>	the type of the values that are fused
  * @param <RecordType>	the type that represents a record
  */
-public class FavourSources_Name<ValueType, RecordType extends Matchable & Fusible<SchemaElementType>, SchemaElementType extends Matchable>
+public class FavourSources_Participation<ValueType, RecordType extends Matchable & Fusible<SchemaElementType>, SchemaElementType extends Matchable>
 		extends ConflictResolutionFunction<ValueType, RecordType, SchemaElementType> {
 
 	@Override
@@ -47,15 +47,15 @@ public class FavourSources_Name<ValueType, RecordType extends Matchable & Fusibl
 			switch (valueInt) {
 				case 1: newScore = 5;
 				break;
-				case 2: newScore = 6;
+				case 2: newScore = 3;
 				break;
-				case 3: newScore = 0;
+				case 3: newScore = 4;
 				break;
-				case 4: newScore = 0;
+				case 4: newScore = 1;
 				break;
-				case 5: newScore = 4;
+				case 5: newScore = 1;
 				break;
-				case 6: newScore = 0;
+				case 6: newScore = 6;
 				break;
 				default: newScore = 0;
 				break;
