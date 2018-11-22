@@ -36,8 +36,6 @@ public class HeightEvaluationRule extends EvaluationRule<Athlete, Attribute> {
 
 	@Override
 	public boolean isEqual(Athlete record1, Athlete record2, Attribute schemaElement) {
-		// the title is correct if all tokens are there, but the order does not
-		// matter
 		return sim.calculate((double)record1.getHeight(), (double)record2.getHeight()) > 0.0;
 	}
 

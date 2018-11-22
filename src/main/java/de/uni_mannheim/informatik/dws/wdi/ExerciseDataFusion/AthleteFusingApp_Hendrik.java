@@ -145,6 +145,7 @@ public class AthleteFusingApp_Hendrik
 		/*
 		// create the fusion engine
 		DataFusionEngine<Athlete, Attribute> engine = new DataFusionEngine<>(strategy);
+		//
 
 		// print consistency report
 		engine.printClusterConsistencyReport(correspondences, null);

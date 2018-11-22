@@ -37,8 +37,6 @@ public class WeightEvaluationRule extends EvaluationRule<Athlete, Attribute> {
 
 	@Override
 	public boolean isEqual(Athlete record1, Athlete record2, Attribute schemaElement) {
-		// the title is correct if all tokens are there, but the order does not
-		// matter
 		return sim.calculate((double)record1.getWeight(), (double)record2.getWeight()) > 0.0;
 	}
 
