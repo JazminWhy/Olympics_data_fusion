@@ -47,15 +47,15 @@ public class FavourSources_Participation<ValueType, RecordType extends Matchable
 			switch (valueInt) {
 				case 1: newScore = 5;
 				break;
-				case 2: newScore = 3;
+				case 2: newScore = 6;
 				break;
-				case 3: newScore = 4;
+				case 3: newScore = 3;
 				break;
-				case 4: newScore = 1;
+				case 4: newScore = 2;
 				break;
-				case 5: newScore = 1;
+				case 5: newScore = 4;
 				break;
-				case 6: newScore = 6;
+				case 6: newScore = 1;
 				break;
 				default: newScore = 0;
 				break;
@@ -64,6 +64,7 @@ public class FavourSources_Participation<ValueType, RecordType extends Matchable
 			if (highestScore_num == 0
 					|| newScore  > highestScore_num) {
 				highestScore = value;
+				highestScore_num = newScore;
 			}
 		}
 
@@ -71,3 +72,4 @@ public class FavourSources_Participation<ValueType, RecordType extends Matchable
 	}
 
 }
+

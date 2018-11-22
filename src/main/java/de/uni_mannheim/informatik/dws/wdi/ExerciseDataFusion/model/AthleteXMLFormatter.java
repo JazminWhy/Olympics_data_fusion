@@ -77,7 +77,7 @@ public class AthleteXMLFormatter extends XMLFormatter<Athlete> {
 		elem.setAttribute("provenance", provenance);
 		return elem;
 	}
-
+/*
 	protected Element createOlympicParticipationsElement(Athlete record, Document doc) {
 		Element OlympicParticipationsRoot = OlympicParticipationFormatter.createRootElement(doc);
 
@@ -87,5 +87,17 @@ public class AthleteXMLFormatter extends XMLFormatter<Athlete> {
 
 		return OlympicParticipationsRoot;
 	}
+*/
+	protected Element createOlympicParticipationsElement(Athlete record, Document doc) {
+		Element OlympicParticipationsRoot = OlympicParticipationFormatter.createRootElement(doc);
+		OlympicParticipationsRoot.setAttribute("provenance",
+				record.getMergedAttributeProvenance(Athlete.OLYMPICPARTICIPATIONS));
 
+		for (OlympicParticipation o : record.getOlympicParticipations()) {
+			OlympicParticipationsRoot.appendChild(OlympicParticipationFormatter
+					.createElementFromRecord(o, doc));
+		}
+
+		return OlympicParticipationsRoot;
+	}
 }

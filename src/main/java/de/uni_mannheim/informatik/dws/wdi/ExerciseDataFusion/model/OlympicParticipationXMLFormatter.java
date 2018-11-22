@@ -26,16 +26,36 @@ public class OlympicParticipationXMLFormatter extends XMLFormatter<OlympicPartic
 
 	@Override
 	public Element createRootElement(Document doc) {
-		return doc.createElement("actors");
+		return doc.createElement("OlympicParticipations");
 	}
 
 	@Override
 	public Element createElementFromRecord(OlympicParticipation record, Document doc) {
 		Element OlympicParticipation = doc.createElement("OlympicParticipation");
 
+		OlympicParticipation.appendChild(createTextElement("Year", Integer.toString(record.getYear()), doc));
 		OlympicParticipation.appendChild(createTextElement("Season", record.getSeason(), doc));
+		OlympicParticipation.appendChild(createTextElement("City", record.getCity(), doc));
+		OlympicParticipation.appendChild(createTextElement("OlympicTeam", record.getOlympicTeam(), doc));
+		OlympicParticipation.appendChild(createTextElement("Disciplines", record.getDisciplines(), doc));
+		OlympicParticipation.appendChild(createTextElement("Event", record.getEvent(), doc));
+		OlympicParticipation.appendChild(createTextElement("Medal", record.getMedal(), doc));
 
 		return OlympicParticipation;
 	}
+	/*
+	public Element createElementFromRecord(Actor record, Document doc) {
+		Element actor = doc.createElement("actor");
 
+		actor.appendChild(createTextElement("name", record.getName(), doc));
+		if(record.getBirthplace()!=null) {
+			actor.appendChild(createTextElement("birthplace", record.getBirthplace(), doc));
+		}
+		if(record.getBirthday()!=null) {
+			actor.appendChild(createTextElement("birthday", record.getBirthday().toString(), doc));
+		}
+
+		return actor;
+	}
+*/
 }

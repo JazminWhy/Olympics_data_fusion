@@ -5,7 +5,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 import org.apache.logging.log4j.Logger;
 
@@ -24,8 +27,7 @@ import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.evaluation.WeightEv
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.ActorsFuserUnion;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.BirthdayFuserFavourSource;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.DateFuserVoting;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.DirectorFuserLongestString;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.HeightFuserClusteredVoting;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.FavourSources_Participation;import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.HeightFuserClusteredVoting;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.NameFuserFavourSource;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.NationalityFuserVoting;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.ParticipationFuserFavourSource;
@@ -33,6 +35,7 @@ import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.PoBFuserFavo
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.SexFuserVoting;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.TitleFuserShortestString;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.WeightFuserClusteredVoting;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model.Actor;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model.Athlete;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model.AthleteXMLReader;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model.FusibleAthleteFactory;
@@ -49,6 +52,8 @@ import de.uni_mannheim.informatik.dws.winter.model.FusibleHashedDataSet;
 import de.uni_mannheim.informatik.dws.winter.model.RecordGroupFactory;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.utils.WinterLogManager;
+
+import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model.OlympicParticipation;
 
 public class AthleteFusingApp_Hendrik {
 	/*
@@ -99,12 +104,21 @@ public class AthleteFusingApp_Hendrik {
 
 		// Maintain Provenance
 		// Scores (e.g. from rating)
-		ds1.setScore(2.0);
-		ds2.setScore(1.0);
-		ds3.setScore(5.0);
-		ds4.setScore(3.0);
-		ds5.setScore(4.0);
-		ds6.setScore(6.0);
+		// Don't change!
+		ds1.setScore(2); // figshare 2
+		ds2.setScore(1); // Kaggle 1
+		ds3.setScore(5); // Rio 5
+		ds4.setScore(3); // DBpedia 3
+		ds5.setScore(4); // Gymnasts 4
+		ds6.setScore(6); // FieldAthletes 6
+		
+		System.out.println("Scores");
+		System.out.println((int) ds1.getScore());
+		System.out.println((int) ds2.getScore());
+		System.out.println((int) ds3.getScore());
+		System.out.println((int) ds4.getScore());
+		System.out.println((int) ds5.getScore());
+		System.out.println((int) ds6.getScore());
 
 		// Date (e.g. last update)
 		DateTimeFormatter formatter = new DateTimeFormatterBuilder().appendPattern("yyyy-MM-dd")
@@ -145,7 +159,23 @@ public class AthleteFusingApp_Hendrik {
 		for (Athlete a : gs.get()) {
 			System.out.println(String.format("gs: %s", a.getIdentifier()));
 		}
-	
+		
+		//Checking for elements in OlympicParticipation
+		/*
+		Athlete x = ds1.getRandomRecord();
+		List<OlympicParticipation> opL = x.getOlympicParticipations();
+		OlympicParticipation op = opL.get(0);
+		
+		System.out.println("Participation elements:");
+		System.out.println(op.getYear());
+		System.out.println(op.getSeason());
+		System.out.println(op.getCity());
+		System.out.println(op.getOlympicTeam());
+		System.out.println(op.getDisciplines());
+		System.out.println(op.getEvent());
+		System.out.println(op.getMedal());
+		*/
+		
 		// define the fusion strategy
 		DataFusionStrategy<Athlete, Attribute> strategy = new DataFusionStrategy<>(new FusibleAthleteFactory());
 		// write debug results to file

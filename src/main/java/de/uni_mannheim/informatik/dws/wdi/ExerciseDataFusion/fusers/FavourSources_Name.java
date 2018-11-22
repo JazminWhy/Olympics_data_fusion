@@ -47,15 +47,15 @@ public class FavourSources_Name<ValueType, RecordType extends Matchable & Fusibl
 			switch (valueInt) {
 				case 1: newScore = 5;
 				break;
-				case 2: newScore = 6;
+				case 2: newScore = 3;
 				break;
-				case 3: newScore = 0;
+				case 3: newScore = 4;
 				break;
-				case 4: newScore = 0;
+				case 4: newScore = 2;
 				break;
-				case 5: newScore = 4;
+				case 5: newScore = 1;
 				break;
-				case 6: newScore = 0;
+				case 6: newScore = 6;
 				break;
 				default: newScore = 0;
 				break;
@@ -64,6 +64,7 @@ public class FavourSources_Name<ValueType, RecordType extends Matchable & Fusibl
 			if (highestScore_num == 0
 					|| newScore  > highestScore_num) {
 				highestScore = value;
+				highestScore_num = newScore;
 			}
 		}
 

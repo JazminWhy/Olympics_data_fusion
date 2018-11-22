@@ -35,7 +35,7 @@ public class ParticipationFuserFavourSource extends
 		AttributeValueFuser<List<OlympicParticipation>, Athlete, Attribute> {
 
 	public ParticipationFuserFavourSource() {
-		super(new FavourSources<List<OlympicParticipation>, Athlete, Attribute>());
+		super(new FavourSources_Participation<List<OlympicParticipation>, Athlete, Attribute>());
 	}
 
 	@Override
