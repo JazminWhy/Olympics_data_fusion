@@ -82,12 +82,12 @@ public class AthleteFusingApp
 		
 		// Maintain Provenance
 		// Scores (e.g. from rating)
-		ds1.setScore(1.0);
-		ds2.setScore(1.0);
-		ds3.setScore(1.0);
-		ds4.setScore(1.0);
-		ds5.setScore(1.0);
-		ds6.setScore(1.0);
+		//ds1.setScore(2.0);
+		//ds2.setScore(1.0);
+		//ds3.setScore(5.0);
+		//ds4.setScore(3.0);
+		//ds5.setScore(4.0);
+		//ds6.setScore(6.0);
 
 		// Date (e.g. last update)
 		DateTimeFormatter formatter = new DateTimeFormatterBuilder()
@@ -97,12 +97,12 @@ public class AthleteFusingApp
 		        .parseDefaulting(ChronoField.SECOND_OF_MINUTE, 0)
 		        .toFormatter(Locale.ENGLISH);
 		
-		//ds1.setDate(LocalDateTime.parse("2012-01-01", formatter));
-		//ds2.setDate(LocalDateTime.parse("2010-01-01", formatter));
-		//ds3.setDate(LocalDateTime.parse("2008-01-01", formatter));
-		//ds4.setDate(LocalDateTime.parse("2018-10-01", formatter));
-		//ds5.setDate(LocalDateTime.parse("2010-01-01", formatter));
-		//ds6.setDate(LocalDateTime.parse("2008-01-01", formatter));
+		ds1.setDate(LocalDateTime.parse("2018-05-28", formatter)); //figshare
+		ds2.setDate(LocalDateTime.parse("2017-01-24", formatter)); //Kaggle (only data until 2014, but updated 2017)
+		ds3.setDate(LocalDateTime.parse("2017-12-21", formatter)); // Rio
+		ds4.setDate(LocalDateTime.parse("2018-10-15", formatter)); //DBpedia (use date of download)
+		ds5.setDate(LocalDateTime.parse("2018-10-15", formatter)); //Gymnast (wikipedia -> date of download bc last update is now nov 2018)
+		ds6.setDate(LocalDateTime.parse("2018-10-15", formatter)); //Field (Official organization -> continuously updated -> use day of download) 
 
 		// load correspondences
 		System.out.println("*\n*\tLoading correspondences\n*");
@@ -124,12 +124,12 @@ public class AthleteFusingApp
 		for(Athlete m : gs.get()) {
 			System.out.println(String.format("gs: %s", m.getIdentifier()));
 		}
-/*
+
 		// define the fusion strategy
 		DataFusionStrategy<Athlete, Attribute> strategy = new DataFusionStrategy<>(new FusibleAthleteFactory());
 		// write debug results to file
 		strategy.activateDebugReport("data/output/debugResultsDatafusion.csv", -1, gs);
-		
+	/*	
 		// add attribute fusers
 		strategy.addAttributeFuser(Athlete.TITLE, new TitleFuserShortestString(),new TitleEvaluationRule());
 		strategy.addAttributeFuser(Athlete.DIRECTOR,new DirectorFuserLongestString(), new DirectorEvaluationRule());
