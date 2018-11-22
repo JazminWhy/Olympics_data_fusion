@@ -51,7 +51,12 @@ public class HeightFuserClusteredVoting extends AttributeValueFuser<Double, Athl
 	@Override
 	public void fuse(RecordGroup<Athlete, Attribute> group, Athlete fusedRecord, Processable<Correspondence<Attribute, Matchable>> schemaCorrespondences, Attribute schemaElement) {
 		FusedValue<Double, Athlete, Attribute> fused = getFusedValue(group, schemaCorrespondences, schemaElement);
-		fusedRecord.setHeight((float)(double) fused.getValue());
+		if (fused.getValue() == null) {
+			fusedRecord.setHeight((float)0.0);
+		}
+		else {
+			fusedRecord.setHeight((float)(double) fused.getValue());
+		}
 		fusedRecord.setAttributeProvenance(Athlete.HEIGHT, fused.getOriginalIds());
 	}
 

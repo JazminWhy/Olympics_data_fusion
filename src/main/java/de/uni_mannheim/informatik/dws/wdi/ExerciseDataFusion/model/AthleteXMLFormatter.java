@@ -12,6 +12,7 @@
 package de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.w3c.dom.Document;
@@ -51,7 +52,15 @@ public class AthleteXMLFormatter extends XMLFormatter<Athlete> {
 
 		Athlete.appendChild(createTextElement("ID", record.getIdentifier(), doc));
 		Athlete.appendChild(createTextElement("Name", record.getName(), doc));
-		Athlete.appendChild(createTextElement("Birthday", record.getBirthday().toString(), doc));
+		if(record.getBirthday()==null) {
+			Athlete.appendChild(createTextElement("Birthday", "", doc));
+		}
+		else {
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+			String birthday = record.getBirthday().format(formatter);
+			
+			Athlete.appendChild(createTextElement("Birthday", birthday, doc));	
+		}
 		Athlete.appendChild(createTextElement("PlaceOfBirth", record.getPlaceOfBirth(), doc));
 		Athlete.appendChild(createTextElement("Sex", record.getSex(), doc));
 		Athlete.appendChild(createTextElement("Nationality", record.getNationality(), doc));

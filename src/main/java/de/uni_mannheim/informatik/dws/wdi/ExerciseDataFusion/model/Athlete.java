@@ -40,7 +40,7 @@ public class Athlete extends AbstractRecord<Attribute> implements Serializable {
 	 * id="DP-100253"> </OlypmicParticipation> </OlypmicParticipations> </Athlete>
 	 */
 	
-	protected String id;
+	//protected String id;
 	//protected String provenance;
 	private String Name;
 	private LocalDateTime Birthday;
@@ -185,6 +185,8 @@ public class Athlete extends AbstractRecord<Attribute> implements Serializable {
 
 	@Override
 	public boolean hasValue(Attribute attribute) {
+		Float weight = getWeight();
+		Float height = getHeight();
 		if(attribute==NAME)
 			return getName() != null && !getName().isEmpty();
 		else if(attribute==BIRTHDAY)
@@ -196,9 +198,9 @@ public class Athlete extends AbstractRecord<Attribute> implements Serializable {
 		else if(attribute==NATIONALITY)
 			return getNationality() != null && !getNationality().isEmpty();
 		else if(attribute==WEIGHT)
-			return getWeight() != 0;
+			return weight != null;
 		else if(attribute==HEIGHT)
-			return getHeight() != 0;
+			return height != null;
 		else if(attribute==OLYMPICPARTICIPATIONS)
 			return getOlympicParticipations() != null && getOlympicParticipations().size() > 0;
 		

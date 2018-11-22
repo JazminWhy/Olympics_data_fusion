@@ -51,8 +51,13 @@ public class WeightFuserClusteredVoting extends AttributeValueFuser<Double, Athl
 	@Override
 	public void fuse(RecordGroup<Athlete, Attribute> group, Athlete fusedRecord, Processable<Correspondence<Attribute, Matchable>> schemaCorrespondences, Attribute schemaElement) {
 		FusedValue<Double, Athlete, Attribute> fused = getFusedValue(group, schemaCorrespondences, schemaElement);
-		fusedRecord.setWeight((float)(double) fused.getValue());
-		fusedRecord.setAttributeProvenance(Athlete.WEIGHT, fused.getOriginalIds());
+		if (fused.getValue() == null) {
+			fusedRecord.setWeight((float)0.0);
+		}
+		else {
+			fusedRecord.setWeight((float)(double) fused.getValue());
+		}
+		fusedRecord.setAttributeProvenance(Athlete.HEIGHT, fused.getOriginalIds());
 	}
 
 }
