@@ -137,7 +137,7 @@ public class AthleteFusingApp_Hendrik {
 		// load correspondences
 		System.out.println("*\n*\tLoading correspondences\n*");
 		CorrespondenceSet<Athlete, Attribute> correspondences = new CorrespondenceSet<>();
-		correspondences.loadCorrespondences(new File("data/correspondences/FINAL_kaggle_figshare_correspondences.csv"),
+		correspondences.loadCorrespondences(new File("data/correspondences/kaggle_figshare_ML_correspondences.csv"),
 				ds2, ds1);
 		correspondences.loadCorrespondences(new File("data/correspondences/rio_figshare_ML_correspondences.csv"), ds3,
 				ds1);
