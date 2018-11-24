@@ -100,7 +100,7 @@ public class AthleteFusingApp_Hendrik {
 		FusibleDataSet<Athlete, Attribute> ds6 = new FusibleHashedDataSet<>();
 		new AthleteXMLReader().loadFromXML(new File("data/input/20181102_FieldAthletes_Final.xml"),
 				"/WinningAthletes/Athlete", ds6);
-		// ds6.printDataSetDensityReport();
+		ds6.printDataSetDensityReport();
 
 		// Maintain Provenance
 		// Scores (e.g. from rating)
@@ -111,14 +111,6 @@ public class AthleteFusingApp_Hendrik {
 		ds4.setScore(3); // DBpedia 3
 		ds5.setScore(4); // Gymnasts 4
 		ds6.setScore(6); // FieldAthletes 6
-		
-		System.out.println("Scores");
-		System.out.println((int) ds1.getScore());
-		System.out.println((int) ds2.getScore());
-		System.out.println((int) ds3.getScore());
-		System.out.println((int) ds4.getScore());
-		System.out.println((int) ds5.getScore());
-		System.out.println((int) ds6.getScore());
 
 		// Date (e.g. last update)
 		DateTimeFormatter formatter = new DateTimeFormatterBuilder().appendPattern("yyyy-MM-dd")
@@ -143,7 +135,7 @@ public class AthleteFusingApp_Hendrik {
 				ds1);
 		correspondences.loadCorrespondences(
 				new File("data/correspondences/dbpedia_figshare_Athlete_correspondences.csv"), ds4, ds1);
-		correspondences.loadCorrespondences(new File("data/correspondences/gymnast_figshare_ML_correspondences.csv"),
+		correspondences.loadCorrespondences(new File("data/correspondences/gymnasts_figshare_ML_correspondences.csv"),
 				ds5, ds1);
 		correspondences.loadCorrespondences(new File("data/correspondences/field_figshare_ML_correspondences.csv"), ds6,
 				ds1);
@@ -161,20 +153,6 @@ public class AthleteFusingApp_Hendrik {
 		}
 		
 		//Checking for elements in OlympicParticipation
-		/*
-		Athlete x = ds1.getRandomRecord();
-		List<OlympicParticipation> opL = x.getOlympicParticipations();
-		OlympicParticipation op = opL.get(0);
-		
-		System.out.println("Participation elements:");
-		System.out.println(op.getYear());
-		System.out.println(op.getSeason());
-		System.out.println(op.getCity());
-		System.out.println(op.getOlympicTeam());
-		System.out.println(op.getDisciplines());
-		System.out.println(op.getEvent());
-		System.out.println(op.getMedal());
-		*/
 		
 		// define the fusion strategy
 		DataFusionStrategy<Athlete, Attribute> strategy = new DataFusionStrategy<>(new FusibleAthleteFactory());
@@ -182,18 +160,13 @@ public class AthleteFusingApp_Hendrik {
 		strategy.activateDebugReport("data/output/debugResultsDatafusion.csv", -1, gs);
 
 		// add attribute fusers
-		strategy.addAttributeFuser(Athlete.NAME, new NameFuserFavourSource(), new NameEvaluationRule()); // Eval missing
-		strategy.addAttributeFuser(Athlete.BIRTHDAY, new BirthdayFuserFavourSource(), new BirthdayEvaluationRule()); // Eval
-																														// missing
-		strategy.addAttributeFuser(Athlete.PLACEOFBIRTH, new PoBFuserFavourSource(), new PlaceOfBirthEvaluationRule()); // Eval
-																														// missing
-		strategy.addAttributeFuser(Athlete.SEX, new SexFuserVoting(), new SexEvaluationRule()); // Eval missing
-		strategy.addAttributeFuser(Athlete.NATIONALITY, new NationalityFuserVoting(), new NationalityEvaluationRule()); // Eval
-																														// missing
-		strategy.addAttributeFuser(Athlete.WEIGHT, new WeightFuserClusteredVoting(), new WeightEvaluationRule()); // Eval
-																													// missing
-		strategy.addAttributeFuser(Athlete.HEIGHT, new HeightFuserClusteredVoting(), new HeightEvaluationRule()); // Eval
-																													// missing
+		strategy.addAttributeFuser(Athlete.NAME, new NameFuserFavourSource(), new NameEvaluationRule());
+		strategy.addAttributeFuser(Athlete.BIRTHDAY, new BirthdayFuserFavourSource(), new BirthdayEvaluationRule());
+		strategy.addAttributeFuser(Athlete.PLACEOFBIRTH, new PoBFuserFavourSource(), new PlaceOfBirthEvaluationRule());
+		strategy.addAttributeFuser(Athlete.SEX, new SexFuserVoting(), new SexEvaluationRule());
+		strategy.addAttributeFuser(Athlete.NATIONALITY, new NationalityFuserVoting(), new NationalityEvaluationRule());
+		strategy.addAttributeFuser(Athlete.WEIGHT, new WeightFuserClusteredVoting(), new WeightEvaluationRule());
+		strategy.addAttributeFuser(Athlete.HEIGHT, new HeightFuserClusteredVoting(), new HeightEvaluationRule());
 		strategy.addAttributeFuser(Athlete.OLYMPICPARTICIPATIONS, new ParticipationFuserFavourSource(),
 				new OlympicParticipationsEvaluationRule());
 
@@ -214,6 +187,7 @@ public class AthleteFusingApp_Hendrik {
 
 		// write the result
 		new AthleteXMLFormatter().writeXML(new File("data/output/fused.xml"), fusedDataSet);
+		fusedDataSet.printDataSetDensityReport();
 
 		// evaluate
 		DataFusionEvaluator<Athlete, Attribute> evaluator = new DataFusionEvaluator<>(strategy);

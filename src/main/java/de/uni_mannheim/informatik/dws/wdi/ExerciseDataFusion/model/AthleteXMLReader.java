@@ -92,16 +92,16 @@ public class AthleteXMLReader extends XMLMatchableReader<Athlete, Attribute>  {
 			String weight = getValueFromChildElement(node, "Weight");
 			String height = getValueFromChildElement(node, "Height");
 			if (weight!= null && !weight.isEmpty()) {
-				float weight_fl =Float.parseFloat(weight);
-				athlete.setWeight(weight_fl);
+				Double weight_fl =Double.parseDouble(weight);
+				athlete.setWeight((Double)weight_fl);
 			}
 			if (height != null && !height.isEmpty()) {
-				float height_fl= Float.parseFloat(height);
-				athlete.setHeight(height_fl);
+				Double height_fl= Double.parseDouble(height);
+				athlete.setHeight((Double)height_fl);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			float zero = 0.0f;
+			Double zero = 0.0;
 			athlete.setHeight(zero);
 			athlete.setWeight(zero);
 		}

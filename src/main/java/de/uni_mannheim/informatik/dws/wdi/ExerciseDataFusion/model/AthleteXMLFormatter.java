@@ -64,8 +64,18 @@ public class AthleteXMLFormatter extends XMLFormatter<Athlete> {
 		Athlete.appendChild(createTextElement("PlaceOfBirth", record.getPlaceOfBirth(), doc));
 		Athlete.appendChild(createTextElement("Sex", record.getSex(), doc));
 		Athlete.appendChild(createTextElement("Nationality", record.getNationality(), doc));
-		Athlete.appendChild(createTextElement("Weight", Float.toString(record.getWeight()), doc));
-		Athlete.appendChild(createTextElement("Height", Float.toString(record.getHeight()), doc));
+		if (record.getWeight() != null) {
+			Athlete.appendChild(createTextElement("Weight", Double.toString(record.getWeight()), doc));
+		}
+		else {
+			Athlete.appendChild(createTextElement("Weight", null, doc));
+		}		
+		if (record.getHeight() != null) {
+			Athlete.appendChild(createTextElement("Height", Double.toString(record.getHeight()), doc));
+		}
+		else {
+			Athlete.appendChild(createTextElement("Height", null, doc));
+		}
 
 		Athlete.appendChild(createOlympicParticipationsElement(record, doc));
 

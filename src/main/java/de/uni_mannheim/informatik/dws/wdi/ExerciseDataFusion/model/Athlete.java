@@ -47,8 +47,8 @@ public class Athlete extends AbstractRecord<Attribute> implements Serializable {
 	private String PlaceOfBirth;
 	private String Sex;
 	private String Nationality;
-	private float Weight;
-	private float Height;
+	private Double Weight;
+	private Double Height;
 	private List<OlympicParticipation> OlympicParticipations;
 	
 	public Athlete(String identifier, String provenance) {
@@ -105,19 +105,19 @@ public class Athlete extends AbstractRecord<Attribute> implements Serializable {
 		Nationality = nationality;
 	}
 
-	public float getWeight() {
+	public Double getWeight() {
 		return Weight;
 	}
 
-	public void setWeight(float weight) {
+	public void setWeight(Double weight) {
 		Weight = weight;
 	}
 
-	public float getHeight() {
+	public Double getHeight() {
 		return Height;
 	}
 
-	public void setHeight(float height) {
+	public void setHeight(Double height) {
 		Height = height;
 	}
 
@@ -185,8 +185,6 @@ public class Athlete extends AbstractRecord<Attribute> implements Serializable {
 
 	@Override
 	public boolean hasValue(Attribute attribute) {
-		Float weight = getWeight();
-		Float height = getHeight();
 		if(attribute==NAME)
 			return getName() != null && !getName().isEmpty();
 		else if(attribute==BIRTHDAY)
@@ -198,9 +196,9 @@ public class Athlete extends AbstractRecord<Attribute> implements Serializable {
 		else if(attribute==NATIONALITY)
 			return getNationality() != null && !getNationality().isEmpty();
 		else if(attribute==WEIGHT)
-			return weight != null;
+			return Weight != null;
 		else if(attribute==HEIGHT)
-			return height != null;
+			return Height != null;
 		else if(attribute==OLYMPICPARTICIPATIONS)
 			return getOlympicParticipations() != null && getOlympicParticipations().size() > 0;
 		

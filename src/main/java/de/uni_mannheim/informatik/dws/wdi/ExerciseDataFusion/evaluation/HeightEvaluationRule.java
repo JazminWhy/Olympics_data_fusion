@@ -35,8 +35,16 @@ public class HeightEvaluationRule extends EvaluationRule<Athlete, Attribute> {
 	SimilarityMeasure<Double> sim = new AbsoluteDifferenceSimilarity(0.01);
 
 	@Override
-	public boolean isEqual(Athlete record1, Athlete record2, Attribute schemaElement) {
+	/*public boolean isEqual(Athlete record1, Athlete record2, Attribute schemaElement) {
 		return sim.calculate((double)record1.getHeight(), (double)record2.getHeight()) > 0.0;
+	}*/
+	public boolean isEqual(Athlete record1, Athlete record2, Attribute schemaElement) {
+		if(record1.getHeight()== null && record2.getHeight()==null)
+			return true;
+		else if(record1.getHeight()== null ^ record2.getHeight()==null)
+			return false;
+		else 
+			return record1.getHeight().equals(record2.getHeight());
 	}
 
 	/* (non-Javadoc)
