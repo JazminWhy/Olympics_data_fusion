@@ -90,20 +90,25 @@ public class AthleteXMLReader extends XMLMatchableReader<Athlete, Attribute>  {
 				
 		try {
 			String weight = getValueFromChildElement(node, "Weight");
-			String height = getValueFromChildElement(node, "Height");
-			if (weight!= null && !weight.isEmpty()) {
+			if (weight!= null && !weight.isEmpty() && Double.parseDouble(weight) > 1) {
 				Double weight_fl =Double.parseDouble(weight);
-				athlete.setWeight((Double)weight_fl);
-			}
-			if (height != null && !height.isEmpty()) {
-				Double height_fl= Double.parseDouble(height);
-				athlete.setHeight((Double)height_fl);
+				athlete.setWeight(weight_fl);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			Double zero = 0.0;
-			athlete.setHeight(zero);
-			athlete.setWeight(zero);
+			athlete.setWeight(null);
+		}
+		
+		try {
+			String height = getValueFromChildElement(node, "Height");
+			if (height != null && !height.isEmpty() && Double.parseDouble(height) > 0.1) {
+				Double height_fl= Double.parseDouble(height);
+				athlete.setHeight(height_fl);
+				System.out.println(athlete.getHeight());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			athlete.setHeight(null);
 		}
 
 		// load the list of actors
