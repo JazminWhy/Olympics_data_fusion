@@ -141,6 +141,10 @@ public class AthleteFusingApp_Hendrik {
 				ds5, ds1);
 		correspondences.loadCorrespondences(new File("data/correspondences/field_figshare_ML_correspondences.csv"), ds6,
 				ds1);
+		correspondences.loadCorrespondences(new File("data/correspondences/figshare_self_correspondences.csv"), ds1,
+				ds1);
+		correspondences.loadCorrespondences(new File("data/correspondences/kaggle_self_correspondences.csv"), ds2,
+				ds2);
 
 		// write group size distribution
 		correspondences.printGroupSizeDistribution();

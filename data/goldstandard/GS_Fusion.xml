@@ -216,8 +216,8 @@
 				<Season>winter</Season>
 				<City>albertville</City>
 				<OlympicTeam>tch</OlympicTeam>
-				<Disciplines>ice hockey men's ice hockey</Disciplines>
-				<Event>ice hockey</Event>
+				<Disciplines>ice hockey</Disciplines>
+				<Event>ice hockey men's ice hockey</Event>
 				<Medal>bronze</Medal>
 			</OlympicParticipation>
 		</OlympicParticipations>
@@ -228,7 +228,7 @@
 		<Birthday>1989-01-19</Birthday>
 		<PlaceOfBirth>china</PlaceOfBirth>
 		<Sex>female</Sex>
-		<Nationality>china</Nationality>
+		<Nationality>pr of china</Nationality>
 		<Weight>47</Weight>
 		<Height>1.60</Height>
 		<OlympicParticipations>
@@ -249,6 +249,15 @@
 				<Disciplines>trampolining</Disciplines>
 				<Event>trampolining women's individual</Event>
 				<Medal>bronze</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>2016</Year>
+				<Season>summer</Season>
+				<City>rio de janeiro</City>
+				<OlympicTeam>chn</OlympicTeam>
+				<Disciplines>trampolining</Disciplines>
+				<Event>trampolining women's individual</Event>
+				<Medal>na</Medal>
 			</OlympicParticipation>
 		</OlympicParticipations>
 	</Athlete>
@@ -459,7 +468,7 @@
 		<Birthday>1972-10-05</Birthday>
 		<PlaceOfBirth>united states</PlaceOfBirth>
 		<Sex>male</Sex>
-		<Nationality>usa</Nationality>
+		<Nationality>united states</Nationality>
 		<Weight>102</Weight>
 		<Height>2.03</Height>
 		<OlympicParticipations>
@@ -536,7 +545,6 @@
 		<Height>1.89</Height>
 		<OlympicParticipations>
 			<OlympicParticipation>
-				<P-ID>fig_p_33439</P-ID>
 				<Year>2016</Year>
 				<Season>summer</Season>
 				<City>rio de janeiro</City>
