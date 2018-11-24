@@ -32,10 +32,11 @@ import de.uni_mannheim.informatik.dws.winter.similarity.numeric.AbsoluteDifferen
  * @author Oliver Lehmberg (oli@dwslab.de)
  * 
  */
-public class WeightFuserClusteredVoting extends AttributeValueFuser<Double, Athlete, Attribute> {
+public class WeightFuserVoting extends AttributeValueFuser<Double, Athlete, Attribute> {
 
-	public WeightFuserClusteredVoting() {
-		super(new ClusteredVote<Double, Athlete, Attribute>(new AbsoluteDifferenceSimilarity(2), 0.95));
+	public WeightFuserVoting() {
+		//super(new ClusteredVoteCustom<Double, Athlete, Attribute>(new AbsoluteDifferenceSimilarity(2.1), 0.00001));
+		super(new Voting<Double, Athlete, Attribute>());
 	}
 	
 	@Override
@@ -45,7 +46,7 @@ public class WeightFuserClusteredVoting extends AttributeValueFuser<Double, Athl
 	
 	@Override
 	public Double getValue(Athlete record, Correspondence<Attribute, Matchable> correspondence) {
-		return (double) record.getWeight();
+		return record.getWeight();
 	}
 
 	@Override

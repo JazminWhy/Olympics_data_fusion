@@ -27,14 +27,16 @@ import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.evaluation.WeightEv
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.ActorsFuserUnion;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.BirthdayFuserFavourSource;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.DateFuserVoting;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.FavourSources_Participation;import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.HeightFuserClusteredVoting;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.FavourSources_Participation;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.HeightFuserMedian;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.HeightFuserVoting;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.NameFuserFavourSource;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.NationalityFuserVoting;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.ParticipationFuserFavourSource;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.PoBFuserFavourSource;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.SexFuserVoting;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.TitleFuserShortestString;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.WeightFuserClusteredVoting;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.WeightFuserVoting;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model.Actor;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model.Athlete;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model.AthleteXMLReader;
@@ -165,8 +167,8 @@ public class AthleteFusingApp_Hendrik {
 		strategy.addAttributeFuser(Athlete.PLACEOFBIRTH, new PoBFuserFavourSource(), new PlaceOfBirthEvaluationRule());
 		strategy.addAttributeFuser(Athlete.SEX, new SexFuserVoting(), new SexEvaluationRule());
 		strategy.addAttributeFuser(Athlete.NATIONALITY, new NationalityFuserVoting(), new NationalityEvaluationRule());
-		strategy.addAttributeFuser(Athlete.WEIGHT, new WeightFuserClusteredVoting(), new WeightEvaluationRule());
-		strategy.addAttributeFuser(Athlete.HEIGHT, new HeightFuserClusteredVoting(), new HeightEvaluationRule());
+		strategy.addAttributeFuser(Athlete.WEIGHT, new WeightFuserVoting(), new WeightEvaluationRule());
+		strategy.addAttributeFuser(Athlete.HEIGHT, new HeightFuserVoting(), new HeightEvaluationRule());
 		strategy.addAttributeFuser(Athlete.OLYMPICPARTICIPATIONS, new ParticipationFuserFavourSource(),
 				new OlympicParticipationsEvaluationRule());
 

@@ -196,9 +196,9 @@ public class Athlete extends AbstractRecord<Attribute> implements Serializable {
 		else if(attribute==NATIONALITY)
 			return getNationality() != null && !getNationality().isEmpty();
 		else if(attribute==WEIGHT)
-			return Weight != null;
+			return Weight != null && !getWeight().isNaN();
 		else if(attribute==HEIGHT)
-			return Height != null;
+			return Height != null && !getHeight().isNaN();
 		else if(attribute==OLYMPICPARTICIPATIONS)
 			return getOlympicParticipations() != null && getOlympicParticipations().size() > 0;
 		

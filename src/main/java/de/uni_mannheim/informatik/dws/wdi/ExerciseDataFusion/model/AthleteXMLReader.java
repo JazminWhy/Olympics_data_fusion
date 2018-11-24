@@ -104,7 +104,6 @@ public class AthleteXMLReader extends XMLMatchableReader<Athlete, Attribute>  {
 			if (height != null && !height.isEmpty() && Double.parseDouble(height) > 0.1) {
 				Double height_fl= Double.parseDouble(height);
 				athlete.setHeight(height_fl);
-				System.out.println(athlete.getHeight());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

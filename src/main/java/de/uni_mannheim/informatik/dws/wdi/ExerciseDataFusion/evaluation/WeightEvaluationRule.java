@@ -33,19 +33,11 @@ import de.uni_mannheim.informatik.dws.winter.similarity.string.TokenizingJaccard
  */
 public class WeightEvaluationRule extends EvaluationRule<Athlete, Attribute> {
 
-	SimilarityMeasure<Double> sim = new PercentageSimilarity(0.02);
+	SimilarityMeasure<Double> sim = new PercentageSimilarity(0.04);
 
-	@Override/*
+	@Override
 	public boolean isEqual(Athlete record1, Athlete record2, Attribute schemaElement) {
-		return sim.calculate((double)record1.getWeight(), (double)record2.getWeight()) > 0.0;
-	}*/
-	public boolean isEqual(Athlete record1, Athlete record2, Attribute schemaElement) {
-		if(record1.getWeight()== null && record2.getWeight()==null)
-			return true;
-		else if(record1.getWeight()== null ^ record2.getWeight()==null)
-			return false;
-		else 
-			return record1.getWeight().equals(record2.getWeight());
+		return sim.calculate(record1.getWeight(), record2.getWeight()) > 0.0;
 	}
 
 	/* (non-Javadoc)

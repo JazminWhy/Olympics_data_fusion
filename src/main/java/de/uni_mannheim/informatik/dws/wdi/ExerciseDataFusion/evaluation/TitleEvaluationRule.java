@@ -33,8 +33,7 @@ public class TitleEvaluationRule extends EvaluationRule<Movie, Attribute> {
 
 	@Override
 	public boolean isEqual(Movie record1, Movie record2, Attribute schemaElement) {
-		// the title is correct if all tokens are there, but the order does not
-		// matter
+		// the title is correct if all tokens are there, but the order does not matter
 		return sim.calculate(record1.getTitle(), record2.getTitle()) == 1.0;
 	}
 
