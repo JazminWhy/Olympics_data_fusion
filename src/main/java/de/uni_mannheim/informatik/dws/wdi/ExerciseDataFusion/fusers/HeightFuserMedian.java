@@ -27,40 +27,31 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 import de.uni_mannheim.informatik.dws.winter.similarity.SimilarityMeasure;
 import de.uni_mannheim.informatik.dws.winter.similarity.numeric.AbsoluteDifferenceSimilarity;
+
 /**
- * {@link AttributeValueFuser} for the date of {@link Movie}s. 
+ * {@link AttributeValueFuser} for the height of {@link Athlete}s. This fuser
+ * calculates the {@link MedianCustom} value of all heights, which also works if
+ * there is only a single value.
  * 
- * @author Oliver Lehmberg (oli@dwslab.de)
+ * @author Hendrik Roeder
  * 
  */
 public class HeightFuserMedian extends AttributeValueFuser<Double, Athlete, Attribute> {
 
 	public HeightFuserMedian() {
-		//super(new ClusteredVoteCustom<Double, Athlete, Attribute>(new AbsoluteDifferenceSimilarity(100), 0.00001));
 		super(new MedianCustom<Athlete, Attribute>());
 	}
-	
-	@Override
+
 	public boolean hasValue(Athlete record, Correspondence<Attribute, Matchable> correspondence) {
 		return record.hasValue(Athlete.HEIGHT);
 	}
-	
-	@Override
+
 	public Double getValue(Athlete record, Correspondence<Attribute, Matchable> correspondence) {
 		return record.getHeight();
 	}
 
-	@Override
-	public void fuse(RecordGroup<Athlete, Attribute> group, Athlete fusedRecord, Processable<Correspondence<Attribute, Matchable>> schemaCorrespondences, Attribute schemaElement) {
-		/*FusedValue<Double, Athlete, Attribute> fused = getFusedValue(group, schemaCorrespondences, schemaElement);
-		if (fused.getValue() == null) {
-			Float f = null;
-			fusedRecord.setHeight(f);
-		}
-		else {
-			fusedRecord.setHeight((float)(double) fused.getValue());
-		}
-		fusedRecord.setAttributeProvenance(Athlete.HEIGHT, fused.getOriginalIds());*/
+	public void fuse(RecordGroup<Athlete, Attribute> group, Athlete fusedRecord,
+			Processable<Correspondence<Attribute, Matchable>> schemaCorrespondences, Attribute schemaElement) {
 		FusedValue<Double, Athlete, Attribute> fused = getFusedValue(group, schemaCorrespondences, schemaElement);
 		fusedRecord.setHeight(fused.getValue());
 		fusedRecord.setAttributeProvenance(Athlete.HEIGHT, fused.getOriginalIds());

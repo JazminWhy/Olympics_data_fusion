@@ -22,11 +22,11 @@ import de.uni_mannheim.informatik.dws.winter.similarity.numeric.AbsoluteDifferen
 import de.uni_mannheim.informatik.dws.winter.similarity.string.TokenizingJaccardSimilarity;
 
 /**
- * {@link EvaluationRule} for the titles of {@link Movie}s. The rule simply
- * compares the titles of two {@link Movie}s and returns true, in case their
- * similarity based on {@link TokenizingJaccardSimilarity} is 1.0.
+ * {@link EvaluationRule} for the height of {@link Athlete}s. The rule compares
+ * the height {@link Athlete}s, tolerating a difference of 0.01m to account for
+ * unit conversion roundings
  * 
- * @author Oliver Lehmberg (oli@dwslab.de)
+ * @author Hendrik Roeder
  * 
  */
 public class HeightEvaluationRule extends EvaluationRule<Athlete, Attribute> {
@@ -38,13 +38,9 @@ public class HeightEvaluationRule extends EvaluationRule<Athlete, Attribute> {
 		return sim.calculate(record1.getHeight(), record2.getHeight()) > 0.0;
 	}
 
-	/* (non-Javadoc)
-	 * @see de.uni_mannheim.informatik.wdi.datafusion.EvaluationRule#isEqual(java.lang.Object, java.lang.Object, de.uni_mannheim.informatik.wdi.model.Correspondence)
-	 */
-	@Override
 	public boolean isEqual(Athlete record1, Athlete record2,
 			Correspondence<Attribute, Matchable> schemaCorrespondence) {
-		return isEqual(record1, record2, (Attribute)null);
+		return isEqual(record1, record2, (Attribute) null);
 	}
-	
+
 }

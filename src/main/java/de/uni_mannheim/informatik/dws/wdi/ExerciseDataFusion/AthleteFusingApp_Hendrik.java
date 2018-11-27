@@ -17,18 +17,27 @@ import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.evaluation.HeightEv
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.evaluation.NameEvaluationRule;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.evaluation.NationalityEvaluationRule;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.evaluation.OlympicParticipationsEvaluationRule;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.evaluation.OlympicParticipationsEvaluationRuleImproved;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.evaluation.PlaceOfBirthEvaluationRule;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.evaluation.SexEvaluationRule;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.evaluation.WeightEvaluationRule;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.BirthdayFuserFavourSource;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.FavourSources_Participation;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.HeightFuserAverage;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.HeightFuserClusteredVote;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.HeightFuserMedian;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.HeightFuserVoting;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.NameFuserFavourSource;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.NameFuserLongest;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.NameFuserShortest;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.NationalityFuserVoting;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.ParticipationFuserFavourSource;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.PoBFuserFavourSource;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.SexFuserVoting;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.WeightFuserAverage;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.WeightFuserClusteredVote;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.WeightFuserMedian;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.WeightFuserMostRecent;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.WeightFuserVoting;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model.Athlete;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model.AthleteXMLReader;
@@ -111,12 +120,12 @@ public class AthleteFusingApp_Hendrik {
 				.parseDefaulting(ChronoField.CLOCK_HOUR_OF_DAY, 0).parseDefaulting(ChronoField.MINUTE_OF_HOUR, 0)
 				.parseDefaulting(ChronoField.SECOND_OF_MINUTE, 0).toFormatter(Locale.ENGLISH);
 
-		ds1.setDate(LocalDateTime.parse("2018-05-28", formatter)); // figshare
-		ds2.setDate(LocalDateTime.parse("2017-01-24", formatter)); // Kaggle (only data until 2014, but updated 2017)
-		ds3.setDate(LocalDateTime.parse("2017-12-21", formatter)); // Rio
-		ds4.setDate(LocalDateTime.parse("2018-10-15", formatter)); // DBpedia (use date of download)
-		ds5.setDate(LocalDateTime.parse("2018-10-15", formatter)); // Gymnast (wikipedia -> date of download bc last
-																	// update is now nov 2018)
+		ds1.setDate(LocalDateTime.parse("2016-08-05", formatter)); // figshare (data until Olympics 2016)
+		ds2.setDate(LocalDateTime.parse("2014-07-14", formatter)); // Kaggle (only data until 2014, but updated 2017)
+		ds3.setDate(LocalDateTime.parse("2016-08-06", formatter)); // Rio (also until Olympia 2016, but maybe more recent)
+		ds4.setDate(LocalDateTime.parse("2014-01-02", formatter)); // DBpedia (assume older than official data)
+		ds5.setDate(LocalDateTime.parse("2014-01-01", formatter)); // Gymnast (assume older than official data 
+																	//and older than Wikipedia fact tables)
 		ds6.setDate(LocalDateTime.parse("2018-10-15", formatter)); // Field (Official organization -> continuously
 																	// updated -> use day of download)
 
@@ -135,8 +144,9 @@ public class AthleteFusingApp_Hendrik {
 				ds1);
 		correspondences.loadCorrespondences(new File("data/correspondences/figshare_self_correspondences.csv"), ds1,
 				ds1);
+		/*
 		correspondences.loadCorrespondences(new File("data/correspondences/kaggle_self_correspondences.csv"), ds2,
-				ds2);
+				ds2);*/
 
 		// write group size distribution
 		correspondences.printGroupSizeDistribution();
@@ -158,13 +168,41 @@ public class AthleteFusingApp_Hendrik {
 		strategy.activateDebugReport("data/output/debugResultsDatafusion.csv", -1, gs);
 
 		// add attribute fusers
-		strategy.addAttributeFuser(Athlete.NAME, new NameFuserFavourSource(), new NameEvaluationRule());
+		
+		//Name Fuser
+		//strategy.addAttributeFuser(Athlete.NAME, new NameFuserFavourSource(), new NameEvaluationRule());
+		strategy.addAttributeFuser(Athlete.NAME, new NameFuserShortest(), new NameEvaluationRule());
+		//strategy.addAttributeFuser(Athlete.NAME, new NameFuserLongest(), new NameEvaluationRule());
+		
+		//BirthdayFuser
 		strategy.addAttributeFuser(Athlete.BIRTHDAY, new BirthdayFuserFavourSource(), new BirthdayEvaluationRule());
+		//strategy.addAttributeFuser(Athlete.BIRTHDAY, new BirthdayFuserFavourSource(), new BirthdayEvaluationRule()); 
+		
+		//PlaceOfBirthFuser  -> DONE
 		strategy.addAttributeFuser(Athlete.PLACEOFBIRTH, new PoBFuserFavourSource(), new PlaceOfBirthEvaluationRule());
+		
+		//SexFuser -> DONE
 		strategy.addAttributeFuser(Athlete.SEX, new SexFuserVoting(), new SexEvaluationRule());
+		
+		//NationalityFuser -> DONE
 		strategy.addAttributeFuser(Athlete.NATIONALITY, new NationalityFuserVoting(), new NationalityEvaluationRule());
-		strategy.addAttributeFuser(Athlete.WEIGHT, new WeightFuserVoting(), new WeightEvaluationRule());
-		strategy.addAttributeFuser(Athlete.HEIGHT, new HeightFuserVoting(), new HeightEvaluationRule());
+		
+		//WeightFuser
+		//strategy.addAttributeFuser(Athlete.WEIGHT, new WeightFuserVoting(), new WeightEvaluationRule());
+		//strategy.addAttributeFuser(Athlete.WEIGHT, new WeightFuserAverage(), new WeightEvaluationRule());
+		//strategy.addAttributeFuser(Athlete.WEIGHT, new WeightFuserMedian(), new WeightEvaluationRule());
+		strategy.addAttributeFuser(Athlete.WEIGHT, new WeightFuserMostRecent(), new WeightEvaluationRule());
+		//strategy.addAttributeFuser(Athlete.WEIGHT, new WeightFuserClusteredVote(), new WeightEvaluationRule());
+		
+		//HeightFuser
+		//strategy.addAttributeFuser(Athlete.HEIGHT, new HeightFuserVoting(), new HeightEvaluationRule());
+		//strategy.addAttributeFuser(Athlete.HEIGHT, new HeightFuserMedian(), new HeightEvaluationRule());
+		strategy.addAttributeFuser(Athlete.HEIGHT, new HeightFuserAverage(), new HeightEvaluationRule());
+		//strategy.addAttributeFuser(Athlete.HEIGHT, new HeightFuserClusteredVote(), new HeightEvaluationRule());
+		
+		//ParticipationFuser -> DONE
+		//strategy.addAttributeFuser(Athlete.OLYMPICPARTICIPATIONS, new ParticipationFuserFavourSource(),
+		//		new OlympicParticipationsEvaluationRule());
 		strategy.addAttributeFuser(Athlete.OLYMPICPARTICIPATIONS, new ParticipationFuserFavourSource(),
 				new OlympicParticipationsEvaluationRule());
 

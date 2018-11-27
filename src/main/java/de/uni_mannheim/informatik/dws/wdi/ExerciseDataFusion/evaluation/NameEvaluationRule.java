@@ -21,11 +21,12 @@ import de.uni_mannheim.informatik.dws.winter.similarity.string.MaximumOfTokenCon
 import de.uni_mannheim.informatik.dws.winter.similarity.string.TokenizingJaccardSimilarity;
 
 /**
- * {@link EvaluationRule} for the titles of {@link Movie}s. The rule simply
- * compares the titles of two {@link Movie}s and returns true, in case their
- * similarity based on {@link TokenizingJaccardSimilarity} is 1.0.
+ * {@link EvaluationRule} for the name of {@link Athlete}s. The rule compares
+ * the name of two {@link Athlete}s and returns true in case their similarity
+ * based on {@link MaximumOfTokenContainment} is 1.0. This means that either the
+ * fused name is completely included in the gold standard or vice versa.
  * 
- * @author Oliver Lehmberg (oli@dwslab.de)
+ * @author Hendrik Roeder
  * 
  */
 public class NameEvaluationRule extends EvaluationRule<Athlete, Attribute> {
@@ -34,18 +35,12 @@ public class NameEvaluationRule extends EvaluationRule<Athlete, Attribute> {
 
 	@Override
 	public boolean isEqual(Athlete record1, Athlete record2, Attribute schemaElement) {
-		// the title is correct if all tokens are there, but the order does not
-		// matter
 		return sim.calculate(record1.getName(), record2.getName()) == 1.0;
 	}
 
-	/* (non-Javadoc)
-	 * @see de.uni_mannheim.informatik.wdi.datafusion.EvaluationRule#isEqual(java.lang.Object, java.lang.Object, de.uni_mannheim.informatik.wdi.model.Correspondence)
-	 */
-	@Override
 	public boolean isEqual(Athlete record1, Athlete record2,
 			Correspondence<Attribute, Matchable> schemaCorrespondence) {
-		return isEqual(record1, record2, (Attribute)null);
+		return isEqual(record1, record2, (Attribute) null);
 	}
-	
+
 }

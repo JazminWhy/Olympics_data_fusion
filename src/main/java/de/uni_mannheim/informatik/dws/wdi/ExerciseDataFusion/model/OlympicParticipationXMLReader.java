@@ -23,9 +23,9 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.model.io.XMLMatchableReader;
 
 /**
- * A {@link XMLMatchableReader} for {@link Actor}s.
+ * A {@link XMLMatchableReader} for {@link OlympicParticipation}s.
  * 
- * @author Oliver Lehmberg (oli@dwslab.de)
+ * @author Jasmin Weimueller & Marius Bock & Hendrik Roeder
  * 
  */
 public class OlympicParticipationXMLReader extends XMLMatchableReader<OlympicParticipation, Attribute> {
@@ -38,7 +38,7 @@ public class OlympicParticipationXMLReader extends XMLMatchableReader<OlympicPar
 		OlympicParticipation olympicparticipation = new OlympicParticipation(id, provenanceInfo);
 
 		// fill the attributes
-		//olympicparticipation.setYear(getValueFromChildElement(node, "year"));
+		olympicparticipation.setYear(Integer.parseInt(getValueFromChildElement(node, "Year")));
 		olympicparticipation.setSeason(getValueFromChildElement(node, "Season"));
 		olympicparticipation.setCity(getValueFromChildElement(node, "City"));
 		olympicparticipation.setOlympicTeam(getValueFromChildElement(node, "OlympicTeam"));
@@ -46,7 +46,6 @@ public class OlympicParticipationXMLReader extends XMLMatchableReader<OlympicPar
 		olympicparticipation.setEvent(getValueFromChildElement(node, "Event"));
 		olympicparticipation.setMedal(getValueFromChildElement(node, "Medal"));
 
-		//System.out.println(olympicparticipation.getSeason());
 
 
 		// convert the date string into a DateTime object

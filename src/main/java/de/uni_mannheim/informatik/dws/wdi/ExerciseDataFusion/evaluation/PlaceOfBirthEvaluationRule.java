@@ -23,31 +23,28 @@ import de.uni_mannheim.informatik.dws.winter.similarity.string.LevenshteinSimila
 import de.uni_mannheim.informatik.dws.winter.similarity.string.TokenizingJaccardSimilarity;
 
 /**
- * {@link EvaluationRule} for the titles of {@link Movie}s. The rule simply
- * compares the titles of two {@link Movie}s and returns true, in case their
- * similarity based on {@link TokenizingJaccardSimilarity} is 1.0.
+ * {@link EvaluationRule} for the place of birth of {@link Athlete}s. The rule
+ * calculates the edit-distance for the nationality of two {@link Athlete}s and
+ * returns true, in case their distance based on {@link LevenshteinEditDistance}
+ * is 2 or less This accounts for possible typos and allow some adjectives
+ * instead of nouns, e.g. Canadian instead of Canada. However, this does not
+ * work for all countries, but higher distances would create too many wrong
+ * matches.
  * 
- * @author Oliver Lehmberg (oli@dwslab.de)
+ * @author Hendrik Roeder
  * 
  */
 public class PlaceOfBirthEvaluationRule extends EvaluationRule<Athlete, Attribute> {
-	
+
 	private LevenshteinEditDistance dist = new LevenshteinEditDistance();
 
-	@Override
 	public boolean isEqual(Athlete record1, Athlete record2, Attribute schemaElement) {
-		// the title is correct if all tokens are there, but the order does not
-		// matter
-		return dist.calculate(record1.getPlaceOfBirth(), record2.getPlaceOfBirth()) <= 1.0;
+		return dist.calculate(record1.getPlaceOfBirth(), record2.getPlaceOfBirth()) <= 2.0;
 	}
 
-	/* (non-Javadoc)
-	 * @see de.uni_mannheim.informatik.wdi.datafusion.EvaluationRule#isEqual(java.lang.Object, java.lang.Object, de.uni_mannheim.informatik.wdi.model.Correspondence)
-	 */
-	@Override
 	public boolean isEqual(Athlete record1, Athlete record2,
 			Correspondence<Attribute, Matchable> schemaCorrespondence) {
-		return isEqual(record1, record2, (Attribute)null);
+		return isEqual(record1, record2, (Attribute) null);
 	}
-	
+
 }

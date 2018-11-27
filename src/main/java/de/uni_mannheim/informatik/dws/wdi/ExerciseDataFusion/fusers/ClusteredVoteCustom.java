@@ -26,7 +26,8 @@ import de.uni_mannheim.informatik.dws.winter.model.Triple;
 import de.uni_mannheim.informatik.dws.winter.similarity.SimilarityMeasure;
 
 /**
- * Clustered Vote {@link ConflictResolutionFunction}: Clusters all values and returns the centroid of the largest cluster
+ * Customization of Clustered Vote {@link ConflictResolutionFunction}: 
+ * Clusters all values and returns the centroid of the largest cluster
  * @author Oliver Lehmberg (oli@dwslab.de)
  *
  * @param <ValueType>	the type of the values that are fused

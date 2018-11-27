@@ -22,6 +22,7 @@ import de.uni_mannheim.informatik.dws.winter.model.FusibleValue;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 
 /**
+ * Customization to use different dataset scores for participations than for other attributes
  * Favour sources {@link ConflictResolutionFunction}: returns the value from the
  * dataset with the highest data set score, which can represent the rating of
  * this dataset or any other score

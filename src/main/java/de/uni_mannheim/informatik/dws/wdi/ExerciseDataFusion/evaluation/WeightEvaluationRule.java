@@ -23,29 +23,24 @@ import de.uni_mannheim.informatik.dws.winter.similarity.numeric.PercentageSimila
 import de.uni_mannheim.informatik.dws.winter.similarity.string.TokenizingJaccardSimilarity;
 
 /**
- * {@link EvaluationRule} for the titles of {@link Movie}s. The rule simply
- * compares the titles of two {@link Movie}s and returns true, in case their
- * similarity based on {@link TokenizingJaccardSimilarity} is 1.0.
+ * {@link EvaluationRule} for the weight of {@link Athlete}s. The rule compares
+ * the weight {@link Athlete}s, tolerating a difference of 4% to account for
+ * unit conversion roundings and a small variation in weight that is natural
  * 
- * @author Oliver Lehmberg (oli@dwslab.de)
+ * @author Hendrik Roeder
  * 
  */
 public class WeightEvaluationRule extends EvaluationRule<Athlete, Attribute> {
 
 	SimilarityMeasure<Double> sim = new PercentageSimilarity(0.04);
 
-	@Override
 	public boolean isEqual(Athlete record1, Athlete record2, Attribute schemaElement) {
 		return sim.calculate(record1.getWeight(), record2.getWeight()) > 0.0;
 	}
 
-	/* (non-Javadoc)
-	 * @see de.uni_mannheim.informatik.wdi.datafusion.EvaluationRule#isEqual(java.lang.Object, java.lang.Object, de.uni_mannheim.informatik.wdi.model.Correspondence)
-	 */
-	@Override
 	public boolean isEqual(Athlete record1, Athlete record2,
 			Correspondence<Attribute, Matchable> schemaCorrespondence) {
-		return isEqual(record1, record2, (Attribute)null);
+		return isEqual(record1, record2, (Attribute) null);
 	}
-	
+
 }

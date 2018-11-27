@@ -18,8 +18,8 @@ import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 
 /**
- * {@link EvaluationRule} for the date of {@link Movie}s. The rule simply
- * compares the year of the dates of two {@link Movie}s.
+ * {@link EvaluationRule} for the birthday of {@link Athlete}s. The rule simply
+ * compares the exact birthdays of two {@link Athlete}s.
  * 
  * @author Hendrik Roeder
  * 
@@ -28,21 +28,17 @@ public class BirthdayEvaluationRule extends EvaluationRule<Athlete, Attribute> {
 
 	@Override
 	public boolean isEqual(Athlete record1, Athlete record2, Attribute schemaElement) {
-		if(record1.getBirthday()==null && record2.getBirthday()==null)
+		if (record1.getBirthday() == null && record2.getBirthday() == null)
 			return true;
-		else if(record1.getBirthday()==null ^ record2.getBirthday()==null)
+		else if (record1.getBirthday() == null ^ record2.getBirthday() == null)
 			return false;
 		else
 			return record1.getBirthday().getYear() == record2.getBirthday().getYear();
 	}
 
-	/* (non-Javadoc)
-	 * @see de.uni_mannheim.informatik.wdi.datafusion.EvaluationRule#isEqual(java.lang.Object, java.lang.Object, de.uni_mannheim.informatik.wdi.model.Correspondence)
-	 */
-	@Override
 	public boolean isEqual(Athlete record1, Athlete record2,
 			Correspondence<Attribute, Matchable> schemaCorrespondence) {
-		return isEqual(record1, record2, (Attribute)null);
+		return isEqual(record1, record2, (Attribute) null);
 	}
-	
+
 }

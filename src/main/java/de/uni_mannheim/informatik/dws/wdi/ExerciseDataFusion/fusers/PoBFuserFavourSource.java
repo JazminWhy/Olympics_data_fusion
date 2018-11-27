@@ -22,9 +22,11 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 
 /**
- * {@link AttributeValueFuser} for the director of {@link Movie}s.
+ * {@link AttributeValueFuser} for the place of birth of {@link Athlete}s. This
+ * fuser returns a place of birth based on a dataset score, which is specified
+ * for this attribute
  * 
- * @author Oliver Lehmberg (oli@dwslab.de)
+ * @author Tido Felix Marshall
  * 
  */
 public class PoBFuserFavourSource extends AttributeValueFuser<String, Athlete, Attribute> {
@@ -44,11 +46,11 @@ public class PoBFuserFavourSource extends AttributeValueFuser<String, Athlete, A
 	}
 
 	@Override
-	public void fuse(RecordGroup<Athlete, Attribute> group, Athlete fusedRecord, Processable<Correspondence<Attribute, Matchable>> schemaCorrespondences, Attribute schemaElement) {
+	public void fuse(RecordGroup<Athlete, Attribute> group, Athlete fusedRecord,
+			Processable<Correspondence<Attribute, Matchable>> schemaCorrespondences, Attribute schemaElement) {
 		FusedValue<String, Athlete, Attribute> fused = getFusedValue(group, schemaCorrespondences, schemaElement);
 		fusedRecord.setPlaceOfBirth(fused.getValue());
-		fusedRecord.setAttributeProvenance(Athlete.PLACEOFBIRTH,
-				fused.getOriginalIds()); 
+		fusedRecord.setAttributeProvenance(Athlete.PLACEOFBIRTH, fused.getOriginalIds());
 	}
 
 }

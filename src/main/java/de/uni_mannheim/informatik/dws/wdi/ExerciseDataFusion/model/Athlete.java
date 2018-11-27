@@ -25,9 +25,9 @@ import de.uni_mannheim.informatik.dws.winter.model.AbstractRecord;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 
 /**
- * A {@link AbstractRecord} representing a movie.
+ * A {@link AbstractRecord} representing an athlete.
  * 
- * @author Oliver Lehmberg (oli@dwslab.de)
+ * @author Jasmin Weimueller & Marius Bock
  * 
  */
 public class Athlete extends AbstractRecord<Attribute> implements Serializable {

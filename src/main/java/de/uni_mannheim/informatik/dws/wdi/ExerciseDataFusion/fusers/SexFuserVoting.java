@@ -22,10 +22,12 @@ import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.RecordGroup;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
+
 /**
- * {@link AttributeValueFuser} for the date of {@link Movie}s. 
+ * {@link AttributeValueFuser} for the gender of {@link Athlete}s. This fuser
+ * returns the gender of an athlete based on {@link Voting}
  * 
- * @author Oliver Lehmberg (oli@dwslab.de)
+ * @author Hendrik Roeder
  * 
  */
 public class SexFuserVoting extends AttributeValueFuser<String, Athlete, Attribute> {
@@ -33,19 +35,17 @@ public class SexFuserVoting extends AttributeValueFuser<String, Athlete, Attribu
 	public SexFuserVoting() {
 		super(new Voting<String, Athlete, Attribute>());
 	}
-	
-	@Override
+
 	public boolean hasValue(Athlete record, Correspondence<Attribute, Matchable> correspondence) {
 		return record.hasValue(Athlete.SEX);
 	}
-	
-	@Override
+
 	public String getValue(Athlete record, Correspondence<Attribute, Matchable> correspondence) {
 		return record.getSex();
 	}
 
-	@Override
-	public void fuse(RecordGroup<Athlete, Attribute> group, Athlete fusedRecord, Processable<Correspondence<Attribute, Matchable>> schemaCorrespondences, Attribute schemaElement) {
+	public void fuse(RecordGroup<Athlete, Attribute> group, Athlete fusedRecord,
+			Processable<Correspondence<Attribute, Matchable>> schemaCorrespondences, Attribute schemaElement) {
 		FusedValue<String, Athlete, Attribute> fused = getFusedValue(group, schemaCorrespondences, schemaElement);
 		fusedRecord.setSex(fused.getValue());
 		fusedRecord.setAttributeProvenance(Athlete.SEX, fused.getOriginalIds());

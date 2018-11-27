@@ -18,12 +18,13 @@ import java.util.List;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model.Athlete;
 import de.uni_mannheim.informatik.dws.winter.model.io.XMLFormatter;
 
 /**
- * {@link XMLFormatter} for {@link Movie}s.
+ * {@link XMLFormatter} for {@link Athlete}s.
  * 
- * @author Oliver Lehmberg (oli@dwslab.de)
+ * @author Jasmin Weimueller & Marius Bock & Hendrik Roeder
  * 
  */
 public class AthleteXMLFormatter extends XMLFormatter<Athlete> {
@@ -35,51 +36,51 @@ public class AthleteXMLFormatter extends XMLFormatter<Athlete> {
 		return doc.createElement("WinningAthletes");
 	}
 
-//	protected String id;
-//	protected String provenance;
-//	private String Name;
-//	private LocalDateTime Birthday;
-//	private String PlaceOfBirth;
-//	private String Sex;
-//	private String Nationality;
-//	private float Weight;
-//	private float Height;
-//	private List<OlympicParticipation> OlympicParticipations;
-
 	@Override
 	public Element createElementFromRecord(Athlete record, Document doc) {
-		Element Athlete = doc.createElement("Athlete");
+		Element athlete = doc.createElement("Athlete");
 
-		Athlete.appendChild(createTextElement("ID", record.getIdentifier(), doc));
-		Athlete.appendChild(createTextElement("Name", record.getName(), doc));
-		if(record.getBirthday()==null) {
-			Athlete.appendChild(createTextElement("Birthday", "", doc));
-		}
-		else {
+		athlete.appendChild(createTextElement("ID", record.getIdentifier(), doc));
+
+		athlete.appendChild(createTextElementWithProvenance("Name", record.getName(),
+				record.getMergedAttributeProvenance(Athlete.NAME), doc));
+
+		if (record.getBirthday() == null) {
+			athlete.appendChild(createTextElement("Birthday", "", doc));
+		} else {
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 			String birthday = record.getBirthday().format(formatter);
-			
-			Athlete.appendChild(createTextElement("Birthday", birthday, doc));	
+
+			athlete.appendChild(createTextElementWithProvenance("Birthday", birthday,
+					record.getMergedAttributeProvenance(Athlete.BIRTHDAY), doc));
 		}
-		Athlete.appendChild(createTextElement("PlaceOfBirth", record.getPlaceOfBirth(), doc));
-		Athlete.appendChild(createTextElement("Sex", record.getSex(), doc));
-		Athlete.appendChild(createTextElement("Nationality", record.getNationality(), doc));
+		athlete.appendChild(createTextElementWithProvenance("PlaceOfBirth", record.getPlaceOfBirth(),
+				record.getMergedAttributeProvenance(Athlete.PLACEOFBIRTH), doc));
+
+		athlete.appendChild(createTextElementWithProvenance("Sex", record.getSex(),
+				record.getMergedAttributeProvenance(Athlete.SEX), doc));
+
+		athlete.appendChild(createTextElementWithProvenance("Nationality", record.getNationality(),
+				record.getMergedAttributeProvenance(Athlete.NATIONALITY), doc));
+
 		if (record.getWeight() != null) {
-			Athlete.appendChild(createTextElement("Weight", Double.toString(record.getWeight()), doc));
+			athlete.appendChild(createTextElementWithProvenance("Weight", Double.toString(record.getWeight()),
+					record.getMergedAttributeProvenance(Athlete.WEIGHT), doc));
+		} else {
+			athlete.appendChild(createTextElementWithProvenance("Weight", null,
+					record.getMergedAttributeProvenance(Athlete.WEIGHT), doc));
 		}
-		else {
-			Athlete.appendChild(createTextElement("Weight", null, doc));
-		}		
 		if (record.getHeight() != null) {
-			Athlete.appendChild(createTextElement("Height", Double.toString(record.getHeight()), doc));
-		}
-		else {
-			Athlete.appendChild(createTextElement("Height", null, doc));
+			athlete.appendChild(createTextElementWithProvenance("Height", Double.toString(record.getHeight()),
+					record.getMergedAttributeProvenance(Athlete.HEIGHT), doc));
+		} else {
+			athlete.appendChild(createTextElementWithProvenance("Height", null,
+					record.getMergedAttributeProvenance(Athlete.HEIGHT), doc));
 		}
 
-		Athlete.appendChild(createOlympicParticipationsElement(record, doc));
+		athlete.appendChild(createOlympicParticipationsElement(record, doc));
 
-		return Athlete;
+		return athlete;
 	}
 
 	protected Element createTextElementWithProvenance(String name, String value, String provenance, Document doc) {
@@ -87,25 +88,14 @@ public class AthleteXMLFormatter extends XMLFormatter<Athlete> {
 		elem.setAttribute("provenance", provenance);
 		return elem;
 	}
-/*
-	protected Element createOlympicParticipationsElement(Athlete record, Document doc) {
-		Element OlympicParticipationsRoot = OlympicParticipationFormatter.createRootElement(doc);
 
-		for (OlympicParticipation o : record.getOlympicParticipations()) {
-			OlympicParticipationsRoot.appendChild(OlympicParticipationFormatter.createElementFromRecord(o, doc));
-		}
-
-		return OlympicParticipationsRoot;
-	}
-*/
 	protected Element createOlympicParticipationsElement(Athlete record, Document doc) {
 		Element OlympicParticipationsRoot = OlympicParticipationFormatter.createRootElement(doc);
 		OlympicParticipationsRoot.setAttribute("provenance",
 				record.getMergedAttributeProvenance(Athlete.OLYMPICPARTICIPATIONS));
 
 		for (OlympicParticipation o : record.getOlympicParticipations()) {
-			OlympicParticipationsRoot.appendChild(OlympicParticipationFormatter
-					.createElementFromRecord(o, doc));
+			OlympicParticipationsRoot.appendChild(OlympicParticipationFormatter.createElementFromRecord(o, doc));
 		}
 
 		return OlympicParticipationsRoot;

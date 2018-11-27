@@ -25,44 +25,34 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 import de.uni_mannheim.informatik.dws.winter.similarity.SimilarityMeasure;
 import de.uni_mannheim.informatik.dws.winter.similarity.numeric.AbsoluteDifferenceSimilarity;
+
 /**
- * {@link AttributeValueFuser} for the date of {@link Movie}s. 
+ * {@link AttributeValueFuser} for the weight of {@link Athlete}s. This fuser
+ * returns a height value based on {@link Voting}
  * 
- * @author Oliver Lehmberg (oli@dwslab.de)
+ * @author Tido Felix Marschall
  * 
  */
 public class WeightFuserVoting extends AttributeValueFuser<Double, Athlete, Attribute> {
 
 	public WeightFuserVoting() {
-		//super(new ClusteredVoteCustom<Double, Athlete, Attribute>(new AbsoluteDifferenceSimilarity(2.1), 0.00001));
 		super(new Voting<Double, Athlete, Attribute>());
 	}
-	
-	@Override
+
 	public boolean hasValue(Athlete record, Correspondence<Attribute, Matchable> correspondence) {
 		return record.hasValue(Athlete.WEIGHT);
 	}
-	
-	@Override
+
 	public Double getValue(Athlete record, Correspondence<Attribute, Matchable> correspondence) {
 		return record.getWeight();
 	}
 
 	@Override
-	public void fuse(RecordGroup<Athlete, Attribute> group, Athlete fusedRecord, Processable<Correspondence<Attribute, Matchable>> schemaCorrespondences, Attribute schemaElement) {
-		/*FusedValue<Double, Athlete, Attribute> fused = getFusedValue(group, schemaCorrespondences, schemaElement);
-		
-		if (fused.getValue() == null) {
-			Float f = null;
-			fusedRecord.setWeight((float)0.0);
-		}
-		else {
-			fusedRecord.setWeight((float)(double) fused.getValue());
-		}
-		*/
+	public void fuse(RecordGroup<Athlete, Attribute> group, Athlete fusedRecord,
+			Processable<Correspondence<Attribute, Matchable>> schemaCorrespondences, Attribute schemaElement) {
 		FusedValue<Double, Athlete, Attribute> fused = getFusedValue(group, schemaCorrespondences, schemaElement);
 		fusedRecord.setWeight(fused.getValue());
-		fusedRecord.setAttributeProvenance(Athlete.WEIGHT, fused.getOriginalIds()); 
+		fusedRecord.setAttributeProvenance(Athlete.WEIGHT, fused.getOriginalIds());
 	}
 
 }

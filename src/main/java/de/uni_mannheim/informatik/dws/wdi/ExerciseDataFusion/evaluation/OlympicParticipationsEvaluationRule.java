@@ -22,11 +22,15 @@ import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 
 /**
- * {@link EvaluationRule} for the actors of {@link Movie}s. The rule simply
- * compares the full set of actors of two {@link Movie}s and returns true, in
- * case they are identical.
+ * {@link EvaluationRule} for the {@link OlympicParticipation}s of
+ * {@link Athlete}s. The rule compares the full set of participations of two
+ * {@link Athlete}s and returns true, in case year, season,, city, team,
+ * discipline, event and medal are correct for all participations To enable
+ * this, the gold standard uses the same terminology for Disciplines and Events
+ * that is also used by our central dataset. The team names use the official
+ * Olympic country codes.
  * 
- * @author Oliver Lehmberg (oli@dwslab.de)
+ * @author Hendrik Roeder
  * 
  */
 public class OlympicParticipationsEvaluationRule extends EvaluationRule<Athlete, Attribute> {
@@ -36,26 +40,24 @@ public class OlympicParticipationsEvaluationRule extends EvaluationRule<Athlete,
 		Set<String> olympicParticipations1 = new HashSet<>();
 
 		for (OlympicParticipation o : record1.getOlympicParticipations()) {
-			olympicParticipations1.add(o.getYear()+o.getSeason()+o.getCity()+o.getOlympicTeam()+o.getDisciplines()+o.getEvent()+o.getMedal());
+			olympicParticipations1.add(o.getYear() + o.getSeason() + o.getCity() + o.getOlympicTeam()
+					+ o.getDisciplines() + o.getEvent() + o.getMedal());
 		}
 
 		Set<String> olympicParticipations2 = new HashSet<>();
 
 		for (OlympicParticipation o : record2.getOlympicParticipations()) {
-			olympicParticipations2.add(o.getYear()+o.getSeason()+o.getCity()+o.getOlympicTeam()+o.getDisciplines()+o.getEvent()+o.getMedal());
+			olympicParticipations2.add(o.getYear() + o.getSeason() + o.getCity() + o.getOlympicTeam()
+					+ o.getDisciplines() + o.getEvent() + o.getMedal());
 		}
 
-		return olympicParticipations1.containsAll(olympicParticipations2) &&
-				olympicParticipations2.containsAll(olympicParticipations1);
+		return olympicParticipations1.containsAll(olympicParticipations2)
+				&& olympicParticipations2.containsAll(olympicParticipations1);
 	}
 
-	/* (non-Javadoc)
-	 * @see de.uni_mannheim.informatik.wdi.datafusion.EvaluationRule#isEqual(java.lang.Object, java.lang.Object, de.uni_mannheim.informatik.wdi.model.Correspondence)
-	 */
-	@Override
 	public boolean isEqual(Athlete record1, Athlete record2,
 			Correspondence<Attribute, Matchable> schemaCorrespondence) {
-		return isEqual(record1, record2, (Attribute)null);
+		return isEqual(record1, record2, (Attribute) null);
 	}
 
 }

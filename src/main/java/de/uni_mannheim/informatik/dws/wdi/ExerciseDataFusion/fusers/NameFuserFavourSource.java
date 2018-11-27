@@ -22,9 +22,11 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 
 /**
- * {@link AttributeValueFuser} for the director of {@link Movie}s.
+ * {@link AttributeValueFuser} for the name of {@link Athlete}s. This fuser
+ * returns a name based on a dataset score, which is specified for the name
+ * attribute
  * 
- * @author Oliver Lehmberg (oli@dwslab.de)
+ * @author Tido Felix Marshall
  * 
  */
 public class NameFuserFavourSource extends AttributeValueFuser<String, Athlete, Attribute> {
@@ -33,22 +35,19 @@ public class NameFuserFavourSource extends AttributeValueFuser<String, Athlete, 
 		super(new FavourSources_Name<String, Athlete, Attribute>());
 	}
 
-	@Override
 	public boolean hasValue(Athlete record, Correspondence<Attribute, Matchable> correspondence) {
 		return record.hasValue(Athlete.NAME);
 	}
 
-	@Override
 	public String getValue(Athlete record, Correspondence<Attribute, Matchable> correspondence) {
 		return record.getName();
 	}
 
-	@Override
-	public void fuse(RecordGroup<Athlete, Attribute> group, Athlete fusedRecord, Processable<Correspondence<Attribute, Matchable>> schemaCorrespondences, Attribute schemaElement) {
+	public void fuse(RecordGroup<Athlete, Attribute> group, Athlete fusedRecord,
+			Processable<Correspondence<Attribute, Matchable>> schemaCorrespondences, Attribute schemaElement) {
 		FusedValue<String, Athlete, Attribute> fused = getFusedValue(group, schemaCorrespondences, schemaElement);
 		fusedRecord.setName(fused.getValue());
-		fusedRecord.setAttributeProvenance(Athlete.NAME,
-				fused.getOriginalIds()); 
+		fusedRecord.setAttributeProvenance(Athlete.NAME, fused.getOriginalIds());
 	}
 
 }

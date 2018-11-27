@@ -24,9 +24,10 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 
 /**
- * {@link AttributeValueFuser} for the director of {@link Movie}s.
+ * {@link AttributeValueFuser} for the birthday of {@link Athlete}s. This fuser
+ * is based on {@link FavourSources}
  * 
- * @author Oliver Lehmberg (oli@dwslab.de)
+ * @author Hendrik Roeder
  * 
  */
 public class BirthdayFuserFavourSource extends AttributeValueFuser<LocalDateTime, Athlete, Attribute> {
@@ -35,22 +36,20 @@ public class BirthdayFuserFavourSource extends AttributeValueFuser<LocalDateTime
 		super(new FavourSources<LocalDateTime, Athlete, Attribute>());
 	}
 
-	@Override
 	public boolean hasValue(Athlete record, Correspondence<Attribute, Matchable> correspondence) {
 		return record.hasValue(Athlete.BIRTHDAY);
 	}
 
-	@Override
 	public LocalDateTime getValue(Athlete record, Correspondence<Attribute, Matchable> correspondence) {
 		return record.getBirthday();
 	}
 
-	@Override
-	public void fuse(RecordGroup<Athlete, Attribute> group, Athlete fusedRecord, Processable<Correspondence<Attribute, Matchable>> schemaCorrespondences, Attribute schemaElement) {
-		FusedValue<LocalDateTime, Athlete, Attribute> fused = getFusedValue(group, schemaCorrespondences, schemaElement);
+	public void fuse(RecordGroup<Athlete, Attribute> group, Athlete fusedRecord,
+			Processable<Correspondence<Attribute, Matchable>> schemaCorrespondences, Attribute schemaElement) {
+		FusedValue<LocalDateTime, Athlete, Attribute> fused = getFusedValue(group, schemaCorrespondences,
+				schemaElement);
 		fusedRecord.setBirthday(fused.getValue());
-		fusedRecord.setAttributeProvenance(Athlete.BIRTHDAY,
-				fused.getOriginalIds()); 
+		fusedRecord.setAttributeProvenance(Athlete.BIRTHDAY, fused.getOriginalIds());
 	}
 
 }
