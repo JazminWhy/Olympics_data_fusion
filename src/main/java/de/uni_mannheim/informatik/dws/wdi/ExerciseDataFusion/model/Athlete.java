@@ -30,6 +30,7 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
  * @author Jasmin Weimueller & Marius Bock
  * 
  */
+@SuppressWarnings("serial")
 public class Athlete extends AbstractRecord<Attribute> implements Serializable {
 
 	/*
@@ -159,6 +160,7 @@ public class Athlete extends AbstractRecord<Attribute> implements Serializable {
 		this.provenance.put(attribute, provenance);
 	}
 
+	@SuppressWarnings("unlikely-arg-type")
 	public Collection<String> getAttributeProvenance(String attribute) {
 		return provenance.get(attribute);
 	}

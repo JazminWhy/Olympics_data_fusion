@@ -18,7 +18,6 @@ import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.similarity.SimilarityMeasure;
 import de.uni_mannheim.informatik.dws.winter.similarity.string.MaximumOfTokenContainment;
-import de.uni_mannheim.informatik.dws.winter.similarity.string.TokenizingJaccardSimilarity;
 
 /**
  * {@link EvaluationRule} for the name of {@link Athlete}s. The rule compares

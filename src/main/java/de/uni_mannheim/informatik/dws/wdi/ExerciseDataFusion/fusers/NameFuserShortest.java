@@ -13,8 +13,6 @@ package de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers;
 
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model.Athlete;
 import de.uni_mannheim.informatik.dws.winter.datafusion.AttributeValueFuser;
-import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.meta.FavourSources;
-import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.string.LongestString;
 import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.string.ShortestString;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.FusedValue;

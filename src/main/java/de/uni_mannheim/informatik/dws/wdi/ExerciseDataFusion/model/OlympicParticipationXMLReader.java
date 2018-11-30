@@ -11,14 +11,7 @@
  */
 package de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.temporal.ChronoField;
-import java.util.Locale;
-
 import org.w3c.dom.Node;
-
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.model.io.XMLMatchableReader;
 
@@ -45,8 +38,6 @@ public class OlympicParticipationXMLReader extends XMLMatchableReader<OlympicPar
 		olympicparticipation.setDisciplines(getValueFromChildElement(node, "Disciplines"));
 		olympicparticipation.setEvent(getValueFromChildElement(node, "Event"));
 		olympicparticipation.setMedal(getValueFromChildElement(node, "Medal"));
-
-
 
 		// convert the date string into a DateTime object
 		try {

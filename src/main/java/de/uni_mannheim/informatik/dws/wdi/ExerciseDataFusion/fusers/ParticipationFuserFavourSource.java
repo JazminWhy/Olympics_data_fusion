@@ -16,7 +16,6 @@ import java.util.List;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model.OlympicParticipation;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model.Athlete;
 import de.uni_mannheim.informatik.dws.winter.datafusion.AttributeValueFuser;
-import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.meta.FavourSources;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.FusedValue;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;

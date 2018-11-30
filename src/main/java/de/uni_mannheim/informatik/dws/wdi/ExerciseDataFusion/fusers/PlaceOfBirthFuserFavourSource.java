@@ -29,9 +29,9 @@ import de.uni_mannheim.informatik.dws.winter.processing.Processable;
  * @author Tido Felix Marschall
  * 
  */
-public class PoBFuserFavourSource extends AttributeValueFuser<String, Athlete, Attribute> {
+public class PlaceOfBirthFuserFavourSource extends AttributeValueFuser<String, Athlete, Attribute> {
 
-	public PoBFuserFavourSource() {
+	public PlaceOfBirthFuserFavourSource() {
 		super(new FavourSources<String, Athlete, Attribute>());
 	}
 

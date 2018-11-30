@@ -26,7 +26,7 @@ import de.uni_mannheim.informatik.dws.winter.model.Matchable;
  * Customization to also include situations with only one value.
  * Median {@link ConflictResolutionFunction}: Returns the median of all values
  * 
- * @author Oliver Lehmberg (oli@dwslab.de), adapted by Hendrik Roeder
+ * @author Hendrik Roeder
  * 
  * @param <RecordType>	the type that represents a record
  */

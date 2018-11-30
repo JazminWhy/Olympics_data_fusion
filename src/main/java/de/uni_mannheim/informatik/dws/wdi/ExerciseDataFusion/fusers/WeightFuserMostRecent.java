@@ -11,23 +11,15 @@
  */
 package de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers;
 
-import java.time.LocalDateTime;
-
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model.Athlete;
 import de.uni_mannheim.informatik.dws.winter.datafusion.AttributeValueFuser;
-import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.ClusteredVote;
-import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.Voting;
 import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.meta.MostRecent;
-import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.numeric.Average;
-import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.numeric.Median;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.FusedValue;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.RecordGroup;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
-import de.uni_mannheim.informatik.dws.winter.similarity.SimilarityMeasure;
-import de.uni_mannheim.informatik.dws.winter.similarity.numeric.AbsoluteDifferenceSimilarity;
 
 /**
  * {@link AttributeValueFuser} for the weight of {@link Athlete}s. This fuser
@@ -39,8 +31,6 @@ import de.uni_mannheim.informatik.dws.winter.similarity.numeric.AbsoluteDifferen
 public class WeightFuserMostRecent extends AttributeValueFuser<Double, Athlete, Attribute> {
 
 	public WeightFuserMostRecent() {
-		// super(new ClusteredVoteCustom<Double, Athlete, Attribute>(new
-		// AbsoluteDifferenceSimilarity(100), 0.00001));
 		super(new MostRecent<Double, Athlete, Attribute>());
 	}
 
@@ -55,15 +45,8 @@ public class WeightFuserMostRecent extends AttributeValueFuser<Double, Athlete, 
 	}
 
 	@Override
-	public void fuse(RecordGroup<Athlete, Attribute> group, Athlete fusedRecord,
+	public void fuse(RecordGroup<Athlete, Attribute> group, Athlete fusedRecord, 
 			Processable<Correspondence<Attribute, Matchable>> schemaCorrespondences, Attribute schemaElement) {
-		/*
-		 * FusedValue<Double, Athlete, Attribute> fused = getFusedValue(group,
-		 * schemaCorrespondences, schemaElement); if (fused.getValue() == null) { Float
-		 * f = null; fusedRecord.setWeight(f); } else {
-		 * fusedRecord.setWeight((float)(double) fused.getValue()); }
-		 * fusedRecord.setAttributeProvenance(Athlete.Weight, fused.getOriginalIds());
-		 */
 		FusedValue<Double, Athlete, Attribute> fused = getFusedValue(group, schemaCorrespondences, schemaElement);
 		fusedRecord.setWeight(fused.getValue());
 		fusedRecord.setAttributeProvenance(Athlete.WEIGHT, fused.getOriginalIds());

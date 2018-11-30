@@ -11,22 +11,15 @@
  */
 package de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers;
 
-import java.time.LocalDateTime;
-
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model.Athlete;
 import de.uni_mannheim.informatik.dws.winter.datafusion.AttributeValueFuser;
-import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.ClusteredVote;
-import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.Voting;
 import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.numeric.Average;
-import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.numeric.Median;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.FusedValue;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.RecordGroup;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
-import de.uni_mannheim.informatik.dws.winter.similarity.SimilarityMeasure;
-import de.uni_mannheim.informatik.dws.winter.similarity.numeric.AbsoluteDifferenceSimilarity;
 
 /**
  * {@link AttributeValueFuser} for the weight of {@link Athlete}s. This fuser

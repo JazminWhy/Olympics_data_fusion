@@ -43,7 +43,6 @@ public class AthleteXMLReader extends XMLMatchableReader<Athlete, Attribute> {
 		dataset.addAttribute(Athlete.WEIGHT);
 		dataset.addAttribute(Athlete.HEIGHT);
 		dataset.addAttribute(Athlete.OLYMPICPARTICIPATIONS);
-
 	}
 
 	public Node node;

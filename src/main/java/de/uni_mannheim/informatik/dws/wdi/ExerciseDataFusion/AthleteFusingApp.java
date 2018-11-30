@@ -5,13 +5,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Locale;
-import java.util.Set;
-
 import org.apache.logging.log4j.Logger;
-
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.evaluation.BirthdayEvaluationRule;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.evaluation.HeightEvaluationRule;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.evaluation.NameEvaluationRule;
@@ -21,8 +16,6 @@ import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.evaluation.PlaceOfB
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.evaluation.SexEvaluationRule;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.evaluation.WeightEvaluationRule;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.BirthdayFuserFavourSource;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.BirthdayFuserVoting;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.FavourSources_Participation;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.HeightFuserAverage;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.HeightFuserMedian;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.HeightFuserVoting;
@@ -31,7 +24,7 @@ import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.NameFuserLon
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.NameFuserShortest;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.NationalityFuserVoting;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.ParticipationFuserFavourSource;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.PoBFuserFavourSource;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.PlaceOfBirthFuserFavourSource;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.SexFuserVoting;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.WeightFuserAverage;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.WeightFuserMedian;
@@ -40,9 +33,7 @@ import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.WeightFuserV
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model.Athlete;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model.AthleteXMLReader;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model.FusibleAthleteFactory;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model.Athlete;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model.AthleteXMLFormatter;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model.AthleteXMLReader;
 import de.uni_mannheim.informatik.dws.winter.datafusion.CorrespondenceSet;
 import de.uni_mannheim.informatik.dws.winter.datafusion.DataFusionEngine;
 import de.uni_mannheim.informatik.dws.winter.datafusion.DataFusionEvaluator;
@@ -50,12 +41,11 @@ import de.uni_mannheim.informatik.dws.winter.datafusion.DataFusionStrategy;
 import de.uni_mannheim.informatik.dws.winter.model.DataSet;
 import de.uni_mannheim.informatik.dws.winter.model.FusibleDataSet;
 import de.uni_mannheim.informatik.dws.winter.model.FusibleHashedDataSet;
-import de.uni_mannheim.informatik.dws.winter.model.RecordGroupFactory;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.utils.WinterLogManager;
 
-import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model.OlympicParticipation;
 
+@SuppressWarnings("unused")
 public class AthleteFusingApp {
 	/**
 	* Application to run the data fusion
@@ -64,6 +54,7 @@ public class AthleteFusingApp {
 	* 
 	*/
 
+	@SuppressWarnings("unused")
 	private static final Logger logger = WinterLogManager.activateLogger("trace");
 
 	public static void main(String[] args) throws Exception {
@@ -120,26 +111,25 @@ public class AthleteFusingApp {
 		ds3.setDate(LocalDateTime.parse("2016-08-22", formatter)); // Rio (also until Olympia 2016, but maybe more recent)
 		ds4.setDate(LocalDateTime.parse("2014-01-02", formatter)); // DBpedia (assume older than official data)
 		ds5.setDate(LocalDateTime.parse("2014-01-01", formatter)); // Gymnast (assume older than official data 
-																	//and older than Wikipedia fact tables)
+																   // and older than Wikipedia fact tables)
 		ds6.setDate(LocalDateTime.parse("2018-10-15", formatter)); // Field (Official organization -> continuously
-																	// updated -> use day of download)
+																   // updated -> use day of download)
 
 		// load correspondences
 		System.out.println("*\n*\tLoading correspondences\n*");
 		CorrespondenceSet<Athlete, Attribute> correspondences = new CorrespondenceSet<>();
 		correspondences.loadCorrespondences(new File("data/correspondences/kaggle_figshare_ML_correspondences.csv"),
 				ds2, ds1);
-		correspondences.loadCorrespondences(new File("data/correspondences/rio_figshare_ML_correspondences.csv"), ds3,
-				ds1);
-		correspondences.loadCorrespondences(
-				new File("data/correspondences/DBpedia_figshare_LC_correspondences_5.csv"), ds4, ds1);
-		
+		correspondences.loadCorrespondences(new File("data/correspondences/rio_figshare_ML_correspondences.csv"),
+				ds3, ds1);
+		correspondences.loadCorrespondences(new File("data/correspondences/DBpedia_figshare_LC_correspondences.csv"),
+				ds4, ds1);
 		correspondences.loadCorrespondences(new File("data/correspondences/gymnasts_figshare_ML_correspondences.csv"),
 				ds5, ds1);
-		correspondences.loadCorrespondences(new File("data/correspondences/field_figshare_ML_correspondences.csv"), ds6,
-				ds1);
-		correspondences.loadCorrespondences(new File("data/correspondences/figshare_self_correspondences.csv"), ds1,
-				ds1);
+		correspondences.loadCorrespondences(new File("data/correspondences/field_figshare_ML_correspondences.csv"), 
+				ds6, ds1);
+		correspondences.loadCorrespondences(new File("data/correspondences/figshare_self_correspondences.csv"), 
+				ds1, ds1);
 
 		// write group size distribution
 		correspondences.printGroupSizeDistribution();
@@ -147,14 +137,13 @@ public class AthleteFusingApp {
 		// load the gold standard
 		System.out.println("*\n*\tEvaluating results\n*");
 		DataSet<Athlete, Attribute> gs = new FusibleHashedDataSet<>();
-		new AthleteXMLReader().loadFromXML(new File("data/goldstandard/GS_Fusion.xml"), "/WinningAthletes/Athlete", gs);
+		new AthleteXMLReader().loadFromXML(new File("data/goldstandard/gs_DataFusion.xml"), "/WinningAthletes/Athlete", gs);
 
 		for (Athlete a : gs.get()) {
 			System.out.println(String.format("gs: %s", a.getIdentifier()));
 		}
 		
-		//Checking for elements in OlympicParticipation
-		
+		// checking for elements in OlympicParticipation
 		// define the fusion strategy
 		DataFusionStrategy<Athlete, Attribute> strategy = new DataFusionStrategy<>(new FusibleAthleteFactory());
 		// write debug results to file
@@ -162,42 +151,41 @@ public class AthleteFusingApp {
 
 		// add attribute fusers
 		
-		//Name Fuser
+		// NameFuser
 		strategy.addAttributeFuser(Athlete.NAME, new NameFuserFavourSource(), new NameEvaluationRule());
 		//strategy.addAttributeFuser(Athlete.NAME, new NameFuserShortest(), new NameEvaluationRule());
 		//strategy.addAttributeFuser(Athlete.NAME, new NameFuserLongest(), new NameEvaluationRule());
 		
-		//BirthdayFuser
+		// BirthdayFuser
 		strategy.addAttributeFuser(Athlete.BIRTHDAY, new BirthdayFuserFavourSource(), new BirthdayEvaluationRule());
 		//strategy.addAttributeFuser(Athlete.BIRTHDAY, new BirthdayFuserVoting(), new BirthdayEvaluationRule());
 		
-		//PlaceOfBirthFuser  -> DONE
-		strategy.addAttributeFuser(Athlete.PLACEOFBIRTH, new PoBFuserFavourSource(), new PlaceOfBirthEvaluationRule());
+		// PlaceOfBirthFuser
+		strategy.addAttributeFuser(Athlete.PLACEOFBIRTH, new PlaceOfBirthFuserFavourSource(), new PlaceOfBirthEvaluationRule());
 		
-		//SexFuser -> DONE
+		// SexFuser
 		strategy.addAttributeFuser(Athlete.SEX, new SexFuserVoting(), new SexEvaluationRule());
 		
-		//NationalityFuser -> DONE
+		// NationalityFuser
 		strategy.addAttributeFuser(Athlete.NATIONALITY, new NationalityFuserVoting(), new NationalityEvaluationRule());
 		
-		//WeightFuser
+		// WeightFuser
 		strategy.addAttributeFuser(Athlete.WEIGHT, new WeightFuserVoting(), new WeightEvaluationRule());
 		//strategy.addAttributeFuser(Athlete.WEIGHT, new WeightFuserAverage(), new WeightEvaluationRule());
 		//strategy.addAttributeFuser(Athlete.WEIGHT, new WeightFuserMedian(), new WeightEvaluationRule());
 		//strategy.addAttributeFuser(Athlete.WEIGHT, new WeightFuserMostRecent(), new WeightEvaluationRule());
 		
-		//HeightFuser
+		// HeightFuser
 		strategy.addAttributeFuser(Athlete.HEIGHT, new HeightFuserVoting(), new HeightEvaluationRule());
 		//strategy.addAttributeFuser(Athlete.HEIGHT, new HeightFuserMedian(), new HeightEvaluationRule());
 		//strategy.addAttributeFuser(Athlete.HEIGHT, new HeightFuserAverage(), new HeightEvaluationRule());
 		
-		//ParticipationFuser -> DONE
+		// ParticipationFuser
 		strategy.addAttributeFuser(Athlete.OLYMPICPARTICIPATIONS, new ParticipationFuserFavourSource(),
 				new OlympicParticipationsEvaluationRule());
 
 		// create the fusion engine
 		DataFusionEngine<Athlete, Attribute> engine = new DataFusionEngine<>(strategy);
-		//
 
 		// print consistency report
 		engine.printClusterConsistencyReport(correspondences, null);

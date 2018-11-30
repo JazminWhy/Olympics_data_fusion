@@ -11,13 +11,9 @@
  */
 package de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model;
 
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model.Athlete;
 import de.uni_mannheim.informatik.dws.winter.model.io.XMLFormatter;
 

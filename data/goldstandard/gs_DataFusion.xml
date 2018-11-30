@@ -1,0 +1,723 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WinningAthletes>
+	<Athlete>
+		<ID>fig_3333</ID>
+		<Name>usain st leo bolt</Name>
+		<Birthday>1986-08-21</Birthday>
+		<PlaceOfBirth>jamaica</PlaceOfBirth>
+		<Sex>male</Sex>
+		<Nationality>jamaica</Nationality>
+		<Weight>94</Weight>
+		<Height>1.96</Height>
+		<OlympicParticipations>
+			<OlympicParticipation>
+				<Year>2008</Year>
+				<Season>summer</Season>
+				<City>beijing</City>
+				<OlympicTeam>jam</OlympicTeam>
+				<Disciplines>athletics</Disciplines>
+				<Event>athletics men's 100 metres</Event>
+				<Medal>gold</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>2008</Year>
+				<Season>summer</Season>
+				<City>beijing</City>
+				<OlympicTeam>jam</OlympicTeam>
+				<Disciplines>athletics</Disciplines>
+				<Event>athletics men's 200 metres</Event>
+				<Medal>gold</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>2008</Year>
+				<Season>summer</Season>
+				<City>beijing</City>
+				<OlympicTeam>jam</OlympicTeam>
+				<Disciplines>athletics</Disciplines>
+				<Event>athletics men's 4 x 100 metres relay</Event>
+				<Medal>gold</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>2012</Year>
+				<Season>summer</Season>
+				<City>london</City>
+				<OlympicTeam>jam</OlympicTeam>
+				<Disciplines>athletics</Disciplines>
+				<Event>athletics men's 100 metres</Event>
+				<Medal>gold</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>2012</Year>
+				<Season>summer</Season>
+				<City>london</City>
+				<OlympicTeam>jam</OlympicTeam>
+				<Disciplines>athletics</Disciplines>
+				<Event>athletics men's 200 metres</Event>
+				<Medal>gold</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>2012</Year>
+				<Season>summer</Season>
+				<City>london</City>
+				<OlympicTeam>jam</OlympicTeam>
+				<Disciplines>athletics</Disciplines>
+				<Event>athletics men's 4 x 100 metres relay</Event>
+				<Medal>gold</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>2016</Year>
+				<Season>summer</Season>
+				<City>rio de janeiro</City>
+				<OlympicTeam>jam</OlympicTeam>
+				<Disciplines>athletics</Disciplines>
+				<Event>athletics men's 100 metres</Event>
+				<Medal>gold</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>2016</Year>
+				<Season>summer</Season>
+				<City>rio de janeiro</City>
+				<OlympicTeam>jam</OlympicTeam>
+				<Disciplines>athletics</Disciplines>
+				<Event>athletics men's 200 metres</Event>
+				<Medal>gold</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>2016</Year>
+				<Season>summer</Season>
+				<City>rio de janeiro</City>
+				<OlympicTeam>jam</OlympicTeam>
+				<Disciplines>athletics</Disciplines>
+				<Event>athletics men's 4 x 100 metres relay</Event>
+				<Medal>gold</Medal>
+			</OlympicParticipation>
+		</OlympicParticipations>
+	</Athlete>
+	<Athlete>
+		<ID>fig_7674</ID>
+		<Name>fabrizio donato</Name>
+		<Birthday>1976-08-14</Birthday>
+		<PlaceOfBirth></PlaceOfBirth>
+		<Sex>male</Sex>
+		<Nationality>italy</Nationality>
+		<Weight>82</Weight>
+		<Height>1.89</Height>
+		<OlympicParticipations>
+			<OlympicParticipation>
+				<Year>2012</Year>
+				<Season>summer</Season>
+				<City>london</City>
+				<OlympicTeam>ita</OlympicTeam>
+				<Disciplines>athletics</Disciplines>
+				<Event>athletics men's triple jump</Event>
+				<Medal>bronze</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>2016</Year>
+				<Season>summer</Season>
+				<City>rio de janeiro</City>
+				<OlympicTeam>ita</OlympicTeam>
+				<Disciplines>athletics</Disciplines>
+				<Event>athletics men's triple jump</Event>
+				<Medal>na</Medal>
+			</OlympicParticipation>
+		</OlympicParticipations>
+	</Athlete>
+	<Athlete>
+		<ID>fig_5738</ID>
+		<Name>kerron stephon clement</Name>
+		<Birthday>1985-10-31</Birthday>
+		<PlaceOfBirth>trinidad</PlaceOfBirth>
+		<Sex>male</Sex>
+		<Nationality>united states</Nationality>
+		<Weight>88</Weight>
+		<Height>1.88</Height>
+		<OlympicParticipations>
+			<OlympicParticipation>
+				<Year>2008</Year>
+				<Season>summer</Season>
+				<City>beijing</City>
+				<OlympicTeam>usa</OlympicTeam>
+				<Disciplines>athletics</Disciplines>
+				<Event>athletics men's 4 x 400 metres relay</Event>
+				<Medal>gold</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>2008</Year>
+				<Season>summer</Season>
+				<City>beijing</City>
+				<OlympicTeam>usa</OlympicTeam>
+				<Disciplines>athletics</Disciplines>
+				<Event>athletics men's 400 metres hurdles</Event>
+				<Medal>silver</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>2016</Year>
+				<Season>summer</Season>
+				<City>rio de janeiro</City>
+				<OlympicTeam>usa</OlympicTeam>
+				<Disciplines>athletics</Disciplines>
+				<Event>athletics men's 400 metres hurdles</Event>
+				<Medal>gold</Medal>
+			</OlympicParticipation>
+		</OlympicParticipations>
+	</Athlete>
+	<Athlete>
+		<ID>fig_9916</ID>
+		<Name>kazuyoshi funaki</Name>
+		<Birthday>1975-04-27</Birthday>
+		<PlaceOfBirth>japan</PlaceOfBirth>
+		<Sex>male</Sex>
+		<Nationality>japan</Nationality>
+		<Weight>62</Weight>
+		<Height>1.75</Height>
+		<OlympicParticipations>
+			<OlympicParticipation>
+				<Year>1998</Year>
+				<Season>winter</Season>
+				<City>nagano</City>
+				<OlympicTeam>jpn</OlympicTeam>
+				<Disciplines>ski jumping</Disciplines>
+				<Event>ski jumping men's large hill, individual</Event>
+				<Medal>gold</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>1998</Year>
+				<Season>winter</Season>
+				<City>nagano</City>
+				<OlympicTeam>jpn</OlympicTeam>
+				<Disciplines>ski jumping</Disciplines>
+				<Event>ski jumping men's large hill, team</Event>
+				<Medal>gold</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>1998</Year>
+				<Season>winter</Season>
+				<City>nagano</City>
+				<OlympicTeam>jpn</OlympicTeam>
+				<Disciplines>ski jumping</Disciplines>
+				<Event>ski jumping men's normal hill, individual</Event>
+				<Medal>silver</Medal>
+			</OlympicParticipation>
+		</OlympicParticipations>
+	</Athlete>
+	<Athlete>
+		<ID>fig_19464</ID>
+		<Name>ladislav lubina</Name>
+		<Birthday>1967-02-11</Birthday>
+		<PlaceOfBirth>czechoslovakia</PlaceOfBirth>
+		<Sex>male</Sex>
+		<Nationality>czechoslovakia</Nationality>
+		<Weight>91</Weight>
+		<Height>1.85</Height>
+		<OlympicParticipations>
+			<OlympicParticipation>
+				<Year>1992</Year>
+				<Season>winter</Season>
+				<City>albertville</City>
+				<OlympicTeam>tch</OlympicTeam>
+				<Disciplines>ice hockey</Disciplines>
+				<Event>ice hockey men's ice hockey</Event>
+				<Medal>bronze</Medal>
+			</OlympicParticipation>
+		</OlympicParticipations>
+	</Athlete>
+	<Athlete>
+		<ID>fig_12477</ID>
+		<Name>he wenna</Name>
+		<Birthday>1989-01-19</Birthday>
+		<PlaceOfBirth>china</PlaceOfBirth>
+		<Sex>female</Sex>
+		<Nationality>pr of china</Nationality>
+		<Weight>47</Weight>
+		<Height>1.60</Height>
+		<OlympicParticipations>
+			<OlympicParticipation>
+				<Year>2008</Year>
+				<Season>summer</Season>
+				<City>beijing</City>
+				<OlympicTeam>chn</OlympicTeam>
+				<Disciplines>trampolining</Disciplines>
+				<Event>trampolining women's individual</Event>
+				<Medal>gold</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>2012</Year>
+				<Season>summer</Season>
+				<City>london</City>
+				<OlympicTeam>chn</OlympicTeam>
+				<Disciplines>trampolining</Disciplines>
+				<Event>trampolining women's individual</Event>
+				<Medal>bronze</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>2016</Year>
+				<Season>summer</Season>
+				<City>rio de janeiro</City>
+				<OlympicTeam>chn</OlympicTeam>
+				<Disciplines>trampolining</Disciplines>
+				<Event>trampolining women's individual</Event>
+				<Medal>na</Medal>
+			</OlympicParticipation>
+		</OlympicParticipations>
+	</Athlete>
+	<Athlete>
+		<ID>fig_13244</ID>
+		<Name>raphael marcel holzdeppe</Name>
+		<Birthday>1989-09-28</Birthday>
+		<PlaceOfBirth>germany</PlaceOfBirth>
+		<Sex>male</Sex>
+		<Nationality>germany</Nationality>
+		<Weight>78</Weight>
+		<Height>1.83</Height>
+		<OlympicParticipations>
+			<OlympicParticipation>
+				<Year>2012</Year>
+				<Season>summer</Season>
+				<City>london</City>
+				<OlympicTeam>ger</OlympicTeam>
+				<Disciplines>athletics</Disciplines>
+				<Event>athletics men's pole vault</Event>
+				<Medal>bronze</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>2016</Year>
+				<Season>summer</Season>
+				<City>rio de janeiro</City>
+				<OlympicTeam>ger</OlympicTeam>
+				<Disciplines>athletics</Disciplines>
+				<Event>athletics men's pole vault</Event>
+				<Medal>na</Medal>
+			</OlympicParticipation>
+		</OlympicParticipations>
+	</Athlete>
+	<Athlete>
+		<ID>fig_15321</ID>
+		<Name>gerd kanter</Name>
+		<Birthday>1979-05-06</Birthday>
+		<PlaceOfBirth>estonia</PlaceOfBirth>
+		<Sex>male</Sex>
+		<Nationality>estonia</Nationality>
+		<Weight>125</Weight>
+		<Height>1.96</Height>
+		<OlympicParticipations>
+			<OlympicParticipation>
+				<Year>2008</Year>
+				<Season>summer</Season>
+				<City>beijing</City>
+				<OlympicTeam>est</OlympicTeam>
+				<Disciplines>athletics</Disciplines>
+				<Event>athletics men's discus throw</Event>
+				<Medal>gold</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>2012</Year>
+				<Season>summer</Season>
+				<City>london</City>
+				<OlympicTeam>est</OlympicTeam>
+				<Disciplines>athletics</Disciplines>
+				<Event>athletics men's discus throw</Event>
+				<Medal>bronze</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>2016</Year>
+				<Season>summer</Season>
+				<City>rio de janeiro</City>
+				<OlympicTeam>est</OlympicTeam>
+				<Disciplines>athletics</Disciplines>
+				<Event>athletics men's discus throw</Event>
+				<Medal>na</Medal>
+			</OlympicParticipation>
+		</OlympicParticipations>
+	</Athlete>
+	<Athlete>
+		<ID>fig_6192</ID>
+		<Name>chandra crawford</Name>
+		<Birthday>1983-11-19</Birthday>
+		<PlaceOfBirth>canada</PlaceOfBirth>
+		<Sex>female</Sex>
+		<Nationality>canada</Nationality>
+		<Weight>68</Weight>
+		<Height>1.70</Height>
+		<OlympicParticipations>
+			<OlympicParticipation>
+				<Year>2006</Year>
+				<Season>winter</Season>
+				<City>turin</City>
+				<OlympicTeam>can</OlympicTeam>
+				<Disciplines>cross country skiing</Disciplines>
+				<Event>cross country skiing women's sprint</Event>
+				<Medal>gold</Medal>
+			</OlympicParticipation>
+		</OlympicParticipations>
+	</Athlete>
+	<Athlete>
+		<ID>fig_17559</ID>
+		<Name>vyacheslav grigorevich kurennoy</Name>
+		<Birthday>1932-12-10</Birthday>
+		<PlaceOfBirth>soviet union</PlaceOfBirth>
+		<Sex>male</Sex>
+		<Nationality>soviet union</Nationality>
+		<Weight>78</Weight>
+		<Height>1.78</Height>
+		<OlympicParticipations>
+			<OlympicParticipation>
+				<Year>1956</Year>
+				<Season>summer</Season>
+				<City>melbourne</City>
+				<OlympicTeam>urs</OlympicTeam>
+				<Disciplines>water polo</Disciplines>
+				<Event>water polo men's water polo</Event>
+				<Medal>bronze</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>1960</Year>
+				<Season>summer</Season>
+				<City>rome</City>
+				<OlympicTeam>urs</OlympicTeam>
+				<Disciplines>water polo</Disciplines>
+				<Event>water polo men's water polo</Event>
+				<Medal>silver</Medal>
+			</OlympicParticipation>
+		</OlympicParticipations>
+	</Athlete>
+	<Athlete>
+		<ID>fig_422</ID>
+		<Name>morolake akinosun</Name>
+		<Birthday>1994-05-17</Birthday>
+		<PlaceOfBirth>nigeria</PlaceOfBirth>
+		<Sex>female</Sex>
+		<Nationality>united states</Nationality>
+		<Weight>60</Weight>
+		<Height>1.63</Height>
+		<OlympicParticipations>
+			<OlympicParticipation>
+				<Year>2016</Year>
+				<Season>summer</Season>
+				<City>rio de janeiro</City>
+				<OlympicTeam>usa</OlympicTeam>
+				<Disciplines>athletics</Disciplines>
+				<Event>athletics women's 4 x 100 metres relay</Event>
+				<Medal>gold</Medal>
+			</OlympicParticipation>
+		</OlympicParticipations>
+	</Athlete>
+	<Athlete>
+		<ID>fig_18313</ID>
+		<Name>Lee Chul Seung</Name>
+		<Birthday>1972-06-29</Birthday>
+		<PlaceOfBirth>south korea</PlaceOfBirth>
+		<Sex>male</Sex>
+		<Nationality>south korea</Nationality>
+		<Weight>60</Weight>
+		<Height>1.74</Height>
+		<OlympicParticipations>
+			<OlympicParticipation>
+				<Year>1992</Year>
+				<Season>summer</Season>
+				<City>barcelona</City>
+				<OlympicTeam>kor</OlympicTeam>
+				<Disciplines>table tennis</Disciplines>
+				<Event>table tennis men's doubles</Event>
+				<Medal>bronze</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>1996</Year>
+				<Season>summer</Season>
+				<City>atlanta</City>
+				<OlympicTeam>kor</OlympicTeam>
+				<Disciplines>table tennis</Disciplines>
+				<Event>table tennis men's doubles</Event>
+				<Medal>bronze</Medal>
+			</OlympicParticipation>
+		</OlympicParticipations>
+	</Athlete>
+	<Athlete>
+		<ID>fig_4158</ID>
+		<Name>robert charles bryan</Name>
+		<Birthday>1978-04-29</Birthday>
+		<PlaceOfBirth>united states</PlaceOfBirth>
+		<Sex>male</Sex>
+		<Nationality>united states</Nationality>
+		<Weight>92</Weight>
+		<Height>1.93</Height>
+		<OlympicParticipations>
+			<OlympicParticipation>
+				<Year>2008</Year>
+				<Season>summer</Season>
+				<City>beijing</City>
+				<OlympicTeam>usa</OlympicTeam>
+				<Disciplines>tennis</Disciplines>
+				<Event>tennis men's doubles</Event>
+				<Medal>bronze</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>2012</Year>
+				<Season>summer</Season>
+				<City>london</City>
+				<OlympicTeam>usa</OlympicTeam>
+				<Disciplines>tennis</Disciplines>
+				<Event>tennis men's doubles</Event>
+				<Medal>gold</Medal>
+			</OlympicParticipation>
+		</OlympicParticipations>
+	</Athlete>
+	<Athlete>
+		<ID>fig_12949</ID>
+		<Name>grant henry hill</Name>
+		<Birthday>1972-10-05</Birthday>
+		<PlaceOfBirth>united states</PlaceOfBirth>
+		<Sex>male</Sex>
+		<Nationality>united states</Nationality>
+		<Weight>102</Weight>
+		<Height>2.03</Height>
+		<OlympicParticipations>
+			<OlympicParticipation>
+				<Year>1996</Year>
+				<Season>summer</Season>
+				<City>atlanta</City>
+				<OlympicTeam>usa</OlympicTeam>
+				<Disciplines>basketball</Disciplines>
+				<Event>basketball men's basketball</Event>
+				<Medal>gold</Medal>
+			</OlympicParticipation>
+		</OlympicParticipations>
+	</Athlete>
+	<Athlete>
+		<ID>fig_6847</ID>
+		<Name>mark de jonge</Name>
+		<Birthday>1984-02-15</Birthday>
+		<PlaceOfBirth>canada</PlaceOfBirth>
+		<Sex>male</Sex>
+		<Nationality>canada</Nationality>
+		<Weight>91</Weight>
+		<Height>1.80</Height>
+		<OlympicParticipations>
+			<OlympicParticipation>
+				<Year>2012</Year>
+				<Season>summer</Season>
+				<City>london</City>
+				<OlympicTeam>can</OlympicTeam>
+				<Disciplines>canoeing</Disciplines>
+				<Event>canoeing men's kayak singles, 200 metres</Event>
+				<Medal>bronze</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>2016</Year>
+				<Season>summer</Season>
+				<City>rio de janeiro</City>
+				<OlympicTeam>can</OlympicTeam>
+				<Disciplines>canoeing</Disciplines>
+				<Event>canoeing men's kayak singles, 200 metres</Event>
+				<Medal>na</Medal>
+			</OlympicParticipation>
+		</OlympicParticipations>
+	</Athlete>	
+	<Athlete>
+		<ID>fig_33894</ID>
+		<Name>wayde van niekerk</Name>
+		<Birthday>1992-07-15</Birthday>
+		<PlaceOfBirth>south africa</PlaceOfBirth>
+		<Sex>male</Sex>
+		<Nationality>south africa</Nationality>
+		<Weight>72</Weight>
+		<Height>1.84</Height>
+		<OlympicParticipations>
+			<OlympicParticipation>
+				<Year>2016</Year>
+				<Season>summer</Season>
+				<City>rio de janeiro</City>
+				<OlympicTeam>rsa</OlympicTeam>
+				<Disciplines>athletics</Disciplines>
+				<Event>athletics men's 400 metres</Event>
+				<Medal>gold</Medal>
+			</OlympicParticipation>
+		</OlympicParticipations>
+	</Athlete>
+	<Athlete>
+		<ID>fig_24171</ID>
+		<Name>alexandra oquendo</Name>
+		<Birthday>1984-02-03</Birthday>
+		<PlaceOfBirth>puerto rico</PlaceOfBirth>
+		<Sex>female</Sex>
+		<Nationality>puerto rico</Nationality>
+		<Weight>75</Weight>
+		<Height>1.89</Height>
+		<OlympicParticipations>
+			<OlympicParticipation>
+				<Year>2016</Year>
+				<Season>summer</Season>
+				<City>rio de janeiro</City>
+				<OlympicTeam>pur</OlympicTeam>
+				<Disciplines>volleyball</Disciplines>
+				<Event>volleyball women's volleyball</Event>
+				<Medal>na</Medal>
+			</OlympicParticipation>
+		</OlympicParticipations>
+	</Athlete>
+	<Athlete>
+		<ID>fig_25263</ID>
+		<Name>Vasili Alekseevich Pervukhin</Name>
+		<Birthday>1956-01-01</Birthday>
+		<PlaceOfBirth>soviet union</PlaceOfBirth>
+		<Sex>male</Sex>
+		<Nationality>soviet union</Nationality>
+		<Weight>88</Weight>
+		<Height>1.80</Height>
+		<OlympicParticipations>
+			<OlympicParticipation>
+				<Year>1984</Year>
+				<Season>winter</Season>
+				<City>sarajevo</City>
+				<OlympicTeam>urs</OlympicTeam>
+				<Disciplines>ice hockey</Disciplines>
+				<Event>ice hockey men's ice hockey</Event>
+				<Medal>gold</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>1980</Year>
+				<Season>winter</Season>
+				<City>lake placid</City>
+				<OlympicTeam>urs</OlympicTeam>
+				<Disciplines>ice hockey</Disciplines>
+				<Event>ice hockey men's ice hockey</Event>
+				<Medal>silver</Medal>
+			</OlympicParticipation>
+		</OlympicParticipations>
+	</Athlete>
+	<Athlete>
+		<ID>fig_11992</ID>
+		<Name>fabian hambüchen</Name>
+		<Birthday>1987-10-25</Birthday>
+		<PlaceOfBirth>germany</PlaceOfBirth>
+		<Sex>male</Sex>
+		<Nationality>germany</Nationality>
+		<Weight>65</Weight>
+		<Height>1.64</Height>
+		<OlympicParticipations>
+			<OlympicParticipation>
+				<Year>2008</Year>
+				<Season>summer</Season>
+				<City>beijing</City>
+				<OlympicTeam>ger</OlympicTeam>
+				<Disciplines>gymnastics</Disciplines>
+				<Event>gymnastics men's horizontal bar</Event>
+				<Medal>bronze</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>2016</Year>
+				<Season>summer</Season>
+				<City>rio de janeiro</City>
+				<OlympicTeam>ger</OlympicTeam>
+				<Disciplines>gymnastics</Disciplines>
+				<Event>gymnastics men's horizontal bar</Event>
+				<Medal>gold</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>2016</Year>
+				<Season>summer</Season>
+				<City>rio de janeiro</City>
+				<OlympicTeam>ger</OlympicTeam>
+				<Disciplines>gymnastics</Disciplines>
+				<Event>gymnastics men's floor exercise</Event>
+				<Medal>na</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>2016</Year>
+				<Season>summer</Season>
+				<City>rio de janeiro</City>
+				<OlympicTeam>ger</OlympicTeam>
+				<Disciplines>gymnastics</Disciplines>
+				<Event>gymnastics men's team all-around</Event>
+				<Medal>na</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>2012</Year>
+				<Season>summer</Season>
+				<City>london</City>
+				<OlympicTeam>ger</OlympicTeam>
+				<Disciplines>gymnastics</Disciplines>
+				<Event>gymnastics men's horizontal bar</Event>
+				<Medal>silver</Medal>
+			</OlympicParticipation>
+		</OlympicParticipations>
+	</Athlete>
+	<Athlete>
+		<ID>fig_15387</ID>
+		<Name>aleksandr aleksandrovich karelin</Name>
+		<Birthday>1967-09-19</Birthday>
+		<PlaceOfBirth>russia</PlaceOfBirth>
+		<Sex>male</Sex>
+		<Nationality>russia</Nationality>
+		<Weight>130</Weight>
+		<Height>1.93</Height>
+		<OlympicParticipations>
+			<OlympicParticipation>
+				<Year>2000</Year>
+				<Season>summer</Season>
+				<City>sydney</City>
+				<OlympicTeam>rus</OlympicTeam>
+				<Disciplines>wrestling</Disciplines>
+				<Event>wrestling men's super-heavyweight, greco-roman</Event>
+				<Medal>silver</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>1996</Year>
+				<Season>summer</Season>
+				<City>atlanta</City>
+				<OlympicTeam>rus</OlympicTeam>
+				<Disciplines>wrestling</Disciplines>
+				<Event>wrestling men's super-heavyweight, greco-roman</Event>
+				<Medal>gold</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>1992</Year>
+				<Season>summer</Season>
+				<City>barcelona</City>
+				<OlympicTeam>eun</OlympicTeam>
+				<Disciplines>wrestling</Disciplines>
+				<Event>wrestling men's super-heavyweight, greco-roman</Event>
+				<Medal>gold</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>1988</Year>
+				<Season>summer</Season>
+				<City>seoul</City>
+				<OlympicTeam>urs</OlympicTeam>
+				<Disciplines>wrestling</Disciplines>
+				<Event>wrestling men's super-heavyweight, greco-roman</Event>
+				<Medal>gold</Medal>
+			</OlympicParticipation>
+		</OlympicParticipations>
+	</Athlete>
+	<Athlete>
+		<ID>fig_19490</ID>
+		<Name>gina lückenkemper</Name>
+		<Birthday>1996-11-21</Birthday>
+		<PlaceOfBirth>germany</PlaceOfBirth>
+		<Sex>female</Sex>
+		<Nationality>germany</Nationality>
+		<Weight>56</Weight>
+		<Height>1.70</Height>
+		<OlympicParticipations>
+			<OlympicParticipation>
+				<Year>2016</Year>
+				<Season>summer</Season>
+				<City>rio de janeiro</City>
+				<OlympicTeam>ger</OlympicTeam>
+				<Disciplines>athletics</Disciplines>
+				<Event>athletics women's 200 metres</Event>
+				<Medal>na</Medal>
+			</OlympicParticipation>
+			<OlympicParticipation>
+				<Year>2016</Year>
+				<Season>summer</Season>
+				<City>rio de janeiro</City>
+				<OlympicTeam>ger</OlympicTeam>
+				<Disciplines>athletics</Disciplines>
+				<Event>athletics women's 4 x 100 metres relay</Event>
+				<Medal>na</Medal>
+			</OlympicParticipation>
+		</OlympicParticipations>
+	</Athlete>
+</WinningAthletes>

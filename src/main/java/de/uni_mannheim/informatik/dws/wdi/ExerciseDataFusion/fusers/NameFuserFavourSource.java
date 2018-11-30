@@ -13,7 +13,6 @@ package de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers;
 
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model.Athlete;
 import de.uni_mannheim.informatik.dws.winter.datafusion.AttributeValueFuser;
-import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.meta.FavourSources;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.FusedValue;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
@@ -26,7 +25,7 @@ import de.uni_mannheim.informatik.dws.winter.processing.Processable;
  * returns a name based on a dataset score, which is specified for the name
  * attribute
  * 
- * @author Tido Felix Marshall
+ * @author Tido Felix Marschall
  * 
  */
 public class NameFuserFavourSource extends AttributeValueFuser<String, Athlete, Attribute> {

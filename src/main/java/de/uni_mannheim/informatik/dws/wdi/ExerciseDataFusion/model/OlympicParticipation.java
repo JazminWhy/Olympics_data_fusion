@@ -12,8 +12,6 @@
 package de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.model;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
-
 import de.uni_mannheim.informatik.dws.winter.model.AbstractRecord;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 
@@ -24,13 +22,6 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
  * 
  */
 public class OlympicParticipation extends AbstractRecord<Attribute> implements Serializable {
-
-	/*
-	 * example entry <OlypmicParticipation id="DP-100253"> <Year></Year>
-	 * <Season></Season> <City></City> <OlympicTeam></OlympicTeam>
-	 * <Disciplines></Disciplines> <Event></Event> <Medal></Medal>
-	 * </OlypmicParticipation>
-	 */
 
     private static final long serialVersionUID = 1L;
 	private String id;
