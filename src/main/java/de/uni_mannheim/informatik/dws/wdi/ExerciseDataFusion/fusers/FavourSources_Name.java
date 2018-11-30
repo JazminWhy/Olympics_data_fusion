@@ -27,7 +27,7 @@ import de.uni_mannheim.informatik.dws.winter.model.Matchable;
  * dataset with the highest data set score, which can represent the rating of
  * this dataset or any other score
  * 
- * @author Oliver Lehmberg (oli@dwslab.de)
+ * @author Oliver Lehmberg (oli@dwslab.de) adapted by Tido Felix Marschall
  * 
  * @param <ValueType>	the type of the values that are fused
  * @param <RecordType>	the type that represents a record

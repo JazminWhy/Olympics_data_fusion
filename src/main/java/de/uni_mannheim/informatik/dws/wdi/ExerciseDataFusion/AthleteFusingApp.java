@@ -17,14 +17,13 @@ import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.evaluation.HeightEv
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.evaluation.NameEvaluationRule;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.evaluation.NationalityEvaluationRule;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.evaluation.OlympicParticipationsEvaluationRule;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.evaluation.OlympicParticipationsEvaluationRuleImproved;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.evaluation.PlaceOfBirthEvaluationRule;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.evaluation.SexEvaluationRule;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.evaluation.WeightEvaluationRule;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.BirthdayFuserFavourSource;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.BirthdayFuserVoting;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.FavourSources_Participation;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.HeightFuserAverage;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.HeightFuserClusteredVote;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.HeightFuserMedian;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.HeightFuserVoting;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.NameFuserFavourSource;
@@ -35,7 +34,6 @@ import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.Participatio
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.PoBFuserFavourSource;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.SexFuserVoting;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.WeightFuserAverage;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.WeightFuserClusteredVote;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.WeightFuserMedian;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.WeightFuserMostRecent;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseDataFusion.fusers.WeightFuserVoting;
@@ -134,7 +132,8 @@ public class AthleteFusingApp {
 		correspondences.loadCorrespondences(new File("data/correspondences/rio_figshare_ML_correspondences.csv"), ds3,
 				ds1);
 		correspondences.loadCorrespondences(
-				new File("data/correspondences/dbpedia_figshare_Athlete_correspondences.csv"), ds4, ds1);
+				new File("data/correspondences/DBpedia_figshare_LC_correspondences_5.csv"), ds4, ds1);
+		
 		correspondences.loadCorrespondences(new File("data/correspondences/gymnasts_figshare_ML_correspondences.csv"),
 				ds5, ds1);
 		correspondences.loadCorrespondences(new File("data/correspondences/field_figshare_ML_correspondences.csv"), ds6,
@@ -164,13 +163,13 @@ public class AthleteFusingApp {
 		// add attribute fusers
 		
 		//Name Fuser
-		//strategy.addAttributeFuser(Athlete.NAME, new NameFuserFavourSource(), new NameEvaluationRule());
-		strategy.addAttributeFuser(Athlete.NAME, new NameFuserShortest(), new NameEvaluationRule());
+		strategy.addAttributeFuser(Athlete.NAME, new NameFuserFavourSource(), new NameEvaluationRule());
+		//strategy.addAttributeFuser(Athlete.NAME, new NameFuserShortest(), new NameEvaluationRule());
 		//strategy.addAttributeFuser(Athlete.NAME, new NameFuserLongest(), new NameEvaluationRule());
 		
 		//BirthdayFuser
 		strategy.addAttributeFuser(Athlete.BIRTHDAY, new BirthdayFuserFavourSource(), new BirthdayEvaluationRule());
-		//strategy.addAttributeFuser(Athlete.BIRTHDAY, new BirthdayFuserFavourSource(), new BirthdayEvaluationRule()); 
+		//strategy.addAttributeFuser(Athlete.BIRTHDAY, new BirthdayFuserVoting(), new BirthdayEvaluationRule());
 		
 		//PlaceOfBirthFuser  -> DONE
 		strategy.addAttributeFuser(Athlete.PLACEOFBIRTH, new PoBFuserFavourSource(), new PlaceOfBirthEvaluationRule());
@@ -182,21 +181,17 @@ public class AthleteFusingApp {
 		strategy.addAttributeFuser(Athlete.NATIONALITY, new NationalityFuserVoting(), new NationalityEvaluationRule());
 		
 		//WeightFuser
-		//strategy.addAttributeFuser(Athlete.WEIGHT, new WeightFuserVoting(), new WeightEvaluationRule());
+		strategy.addAttributeFuser(Athlete.WEIGHT, new WeightFuserVoting(), new WeightEvaluationRule());
 		//strategy.addAttributeFuser(Athlete.WEIGHT, new WeightFuserAverage(), new WeightEvaluationRule());
 		//strategy.addAttributeFuser(Athlete.WEIGHT, new WeightFuserMedian(), new WeightEvaluationRule());
-		strategy.addAttributeFuser(Athlete.WEIGHT, new WeightFuserMostRecent(), new WeightEvaluationRule());
-		//strategy.addAttributeFuser(Athlete.WEIGHT, new WeightFuserClusteredVote(), new WeightEvaluationRule());
+		//strategy.addAttributeFuser(Athlete.WEIGHT, new WeightFuserMostRecent(), new WeightEvaluationRule());
 		
 		//HeightFuser
-		//strategy.addAttributeFuser(Athlete.HEIGHT, new HeightFuserVoting(), new HeightEvaluationRule());
+		strategy.addAttributeFuser(Athlete.HEIGHT, new HeightFuserVoting(), new HeightEvaluationRule());
 		//strategy.addAttributeFuser(Athlete.HEIGHT, new HeightFuserMedian(), new HeightEvaluationRule());
-		strategy.addAttributeFuser(Athlete.HEIGHT, new HeightFuserAverage(), new HeightEvaluationRule());
-		//strategy.addAttributeFuser(Athlete.HEIGHT, new HeightFuserClusteredVote(), new HeightEvaluationRule());
+		//strategy.addAttributeFuser(Athlete.HEIGHT, new HeightFuserAverage(), new HeightEvaluationRule());
 		
 		//ParticipationFuser -> DONE
-		//strategy.addAttributeFuser(Athlete.OLYMPICPARTICIPATIONS, new ParticipationFuserFavourSource(),
-		//		new OlympicParticipationsEvaluationRule());
 		strategy.addAttributeFuser(Athlete.OLYMPICPARTICIPATIONS, new ParticipationFuserFavourSource(),
 				new OlympicParticipationsEvaluationRule());
 
@@ -225,5 +220,6 @@ public class AthleteFusingApp {
 		double accuracy = evaluator.evaluate(fusedDataSet, gs, null);
 
 		System.out.println(String.format("Accuracy: %.2f", accuracy));
+		
 	}
 }

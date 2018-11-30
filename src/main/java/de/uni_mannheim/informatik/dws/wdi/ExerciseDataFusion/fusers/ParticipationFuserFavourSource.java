@@ -29,7 +29,7 @@ import de.uni_mannheim.informatik.dws.winter.processing.Processable;
  * {@link Athlete}s. This fuser returns a set of participations based on a
  * dataset score, which is specified for this attribute
  * 
- * @author Tido Felix Marshall
+ * @author Tido Felix Marschall
  * 
  */
 public class ParticipationFuserFavourSource

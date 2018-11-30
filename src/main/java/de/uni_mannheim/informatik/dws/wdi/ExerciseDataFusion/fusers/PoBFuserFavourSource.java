@@ -26,7 +26,7 @@ import de.uni_mannheim.informatik.dws.winter.processing.Processable;
  * fuser returns a place of birth based on a dataset score, which is specified
  * for this attribute
  * 
- * @author Tido Felix Marshall
+ * @author Tido Felix Marschall
  * 
  */
 public class PoBFuserFavourSource extends AttributeValueFuser<String, Athlete, Attribute> {
